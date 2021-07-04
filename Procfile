@@ -1,1 +1,1 @@
-web: python3 app_test.py
+web: gunicorn app_test:app –preload
