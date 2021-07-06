@@ -31,6 +31,9 @@ def callback():
     return 'OK'
 #####
 ####
+####
+###
+
 # 回傳 LINE 的資料
 @handler.add(MessageEvent, message=TextMessage)
 def echo(event):
