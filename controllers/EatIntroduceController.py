@@ -15,7 +15,7 @@ class EatIntroduceController():
             PostbackAction(label='介紹',data='/ketoA'),
             PostbackAction(label='推薦食物',data='/ketoB'),
             PostbackAction(label='禁忌食物',data='/ketoC')])
-            template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
+        template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
     @staticmethod
@@ -24,19 +24,19 @@ class EatIntroduceController():
                                         '使得身體必須燃燒自身脂肪產生酮體以提供足夠的熱量，能夠達到快速減重的效果')
         text_message2 = TextSendMessage(text='然而生酮飲食的熱量來源主要來自脂肪，攝取大量的脂肪會提升罹患心血管疾病的風險，且酮體代謝後'+
                                         '會產生酮酸，酮酸過多會導致酮酸中毒，對於心臟病、糖尿病患者來說可能會導致病情惡化，因此不建議兩者病患採行此方法')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
     def ketoB(event):
         text_message1 = TextSendMessage(text='主要為各式脂肪來源(肉類、植物油)和蔬菜，同時需要大量飲水(緩和酮酸濃度及避免身體缺水)')
         text_message2 = TextSendMessage(text='肉類、全脂鮮奶、奶油、蔬菜、植物油、堅果類')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
     def ketoC(event):
         text_message1 = TextSendMessage(text='碳水化合物一定要少，因此高澱粉、高糖分食物盡可能不要吃')
         text_message2 = TextSendMessage(text='五穀根莖類、水果、豆類、甜食、酒精、裹麵衣的油炸食物')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
     def muscle(event):
@@ -65,16 +65,15 @@ class EatIntroduceController():
     def muscleC(event):
         text_message1 = TextSendMessage(text='澱粉、脂肪減量或不吃')
         text_message2 = TextSendMessage(text='白飯、油炸食物、甜食')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
     def dash(event):
         buttons_template = ButtonsTemplate(title='得舒飲食',text='Dash',actions=[
-                                    PostbackAction(label='介紹',data='/dashA'),
-                                    PostbackAction(label='推薦食物',data='/dashB'),
-                                    PostbackAction(label='禁忌食物',data='/dashC')])
-        template_message = TemplateSendMessage(alt_text='Buttons alt text',
-                                        template=buttons_template)
+            PostbackAction(label='介紹',data='/dashA'),
+            PostbackAction(label='推薦食物',data='/dashB'),
+            PostbackAction(label='禁忌食物',data='/dashC')])
+        template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
     @staticmethod
