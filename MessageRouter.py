@@ -13,6 +13,7 @@ class MessageRouter():
 
     def add(self, message, func):
         self._messageRouterMapping[message] = func
+        print('1')
 
     def route(self, event):
         if (self._routerType == 'text'):

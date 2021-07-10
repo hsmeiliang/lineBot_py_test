@@ -47,6 +47,7 @@ postbackRouter.add('/glutenfree', EatIntroduceController.glutenfree)
 postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
 postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
+print('done')
 
 
 # 接收 LINE 的資訊
