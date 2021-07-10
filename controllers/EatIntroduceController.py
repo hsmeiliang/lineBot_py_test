@@ -15,7 +15,7 @@ class EatIntroduceController():
             PostbackAction(label='介紹',data='/ketoA'),
             PostbackAction(label='推薦食物',data='/ketoB'),
             PostbackAction(label='禁忌食物',data='/ketoC')])
-        template_message = TemplateSendMessage(alt_text='Buttons alt text',template=buttons_template)
+            template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
     @staticmethod
@@ -107,8 +107,7 @@ class EatIntroduceController():
             PostbackAction(label='介紹',data='/glutenA'),
             PostbackAction(label='推薦食物',data='/glutenB'),
             PostbackAction(label='禁忌食物',data='/glutenC')])
-        template_message = TemplateSendMessage(alt_text='Buttons alt text',
-                                        template=buttons_template)
+        template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
     @staticmethod
