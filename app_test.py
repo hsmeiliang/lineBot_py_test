@@ -75,7 +75,7 @@ def callback():
 def handle_text_message(event):
     text = event.message.text
     if text == 'advice':
-        buttons_template = ButtonsTemplate(thumbnail_image_url=constant.imageUrlLogo, title='飲食建議',text='Eating suggestion',
+        buttons_template = ButtonsTemplate(title='飲食建議',text='Eating suggestion',
         actions=[PostbackAction(label='生酮飲食',data='/keto'), PostbackAction(label='健身',data='/muscle'),
         PostbackAction(label='得舒飲食',data='/dash'), PostbackAction(label='無麩質飲食',data='/glutenfree')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
