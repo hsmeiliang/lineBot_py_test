@@ -17,8 +17,13 @@ class MessageRouter():
     def route(self, event):
         if (self._routerType == 'text'):
             func = self.findFuncRegex(event.message.text)
+            print('text')
         elif (self._routerType == 'postback'):
             func = self.findFuncRegex(event.postback.data)
+            print('postback')
         if (func != None):
             func(event)
+            print('action')
+        else:
+            print('None')
         return func != None

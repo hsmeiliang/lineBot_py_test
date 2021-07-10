@@ -54,7 +54,7 @@ class EatIntroduceController():
         text_message2 = TextSendMessage(text='雖然醣類、脂肪會影響體脂，但如果不是想要走健美路線的話'+
                                         '不一定要盡量避免，減量即可，例如可用水煮、清蒸等方式烹調食物'+
                                         '主食以馬鈴薯、糙米、全麥等取代白飯，可以減少脂肪和醣類的攝取')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
     def muscleB(event):
@@ -87,18 +87,18 @@ class EatIntroduceController():
         text_message3 = TextSendMessage(text='對於糖尿病、腎臟病患者需注意，因為得舒注重蔬果的攝取，'+
                                         '糖尿病患者要小心水果帶來的血糖飆升，腎臟病患者要小心豐富礦物質對'+
                                         '腎臟的負擔，患者需要先諮詢醫生再決定如何吃較佳')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2,text_message3])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2, text_message3])
 
     @staticmethod
     def dashB(event):
         text_message1 = TextSendMessage(text='全穀類、蔬果、低脂乳製品、黃豆類')
         line_bot_api.reply_message(event.reply_token, text_message1)
-        
+
     @staticmethod
     def dashC(event):
         text_message1 = TextSendMessage(text='少量即可，不需全禁')
         text_message2 = TextSendMessage(text='肉類、脂肪類、甜食(可選擇少油或水果代替)')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
     def glutenfree(event):
@@ -118,17 +118,17 @@ class EatIntroduceController():
                                         '(乳糜瀉)，或是皮膚癢、起疹、喉嚨痛等典型過敏反應，'+
                                         '因此為了這些對麩質過敏的患者，無麩質飲食便誕生了，特色自然就是'+
                                         '避免攝取任何麩質(症狀輕微的可以少量攝取)')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
     def glutenB(event):
         text_message1 = TextSendMessage(text='原則上只有避免攝取麩質，推薦以米類或其他根莖類食物取代麥類')
         text_message2 = TextSendMessage(text='糙米、馬鈴薯、玉米、堅果類、豆類')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
     def glutenC(event):
         text_message1 = TextSendMessage(text='含麩質食物皆不要吃')
         text_message2 = TextSendMessage(text='麥類及其製品(麵包、麵條、麵粉)')
         text_message3 = TextSendMessage(text='另外需注意雜糧米、薏仁等產品，有的雜糧米會混有麥類而因大麥又稱小薏仁(或洋薏仁)，可能會有混淆之餘')
-        line_bot_api.reply_message(event.reply_token, [text_message1,text_message2,text_message3])
+        line_bot_api.reply_message(event.reply_token, [text_message1, text_message2, text_message3])
