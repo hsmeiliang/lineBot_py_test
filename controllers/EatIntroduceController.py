@@ -70,14 +70,14 @@ class EatIntroduceController():
     @staticmethod
     def dash(event):
         buttons_template = ButtonsTemplate(title='得舒飲食',text='Dash',actions=[
-            PostbackTemplateAction(label='介紹',data='/dashA'),
-            PostbackTemplateAction(label='推薦食物',data='/dashB'),
-            PostbackTemplateAction(label='禁忌食物',data='/dashC')])
+            PostbackTemplateAction(label='介紹',data='/_dashA'),
+            PostbackTemplateAction(label='推薦食物',data='/_dashB'),
+            PostbackTemplateAction(label='禁忌食物',data='/_dashC')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
     @staticmethod
-    def dashA(event):
+    def _dashA(event):
         text_message1 = TextSendMessage(text='得舒飲食是為了防止高血壓而發展出來的飲食法，'+
                                         '減少納、油脂的攝取，提升其他的礦物質和膳食纖維的攝取，'+
                                         '有助於降低血壓，得舒飲食原則上鼓勵吃素，但不用只吃素')
@@ -90,12 +90,12 @@ class EatIntroduceController():
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2, text_message3])
 
     @staticmethod
-    def dashB(event):
+    def _dashB(event):
         text_message1 = TextSendMessage(text='全穀類、蔬果、低脂乳製品、黃豆類')
         line_bot_api.reply_message(event.reply_token, text_message1)
 
     @staticmethod
-    def dashC(event):
+    def _dashC(event):
         text_message1 = TextSendMessage(text='少量即可，不需全禁')
         text_message2 = TextSendMessage(text='肉類、脂肪類、甜食(可選擇少油或水果代替)')
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])

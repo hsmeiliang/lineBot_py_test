@@ -41,9 +41,9 @@ postbackRouter.add(message = '/muscleA', func = EatIntroduceController.muscleA)
 postbackRouter.add(message = '/muscleB', func = EatIntroduceController.muscleB)
 postbackRouter.add(message = '/muscleC', func = EatIntroduceController.muscleC)
 postbackRouter.add(message = '/dash', func = EatIntroduceController.dash)
-postbackRouter.add(message = '/dashA', func = EatIntroduceController.dashA)
-postbackRouter.add(message = '/dashB', func = EatIntroduceController.dashB)
-postbackRouter.add(message = '/dashC', func = EatIntroduceController.dashC)
+postbackRouter.add(message = '/_dashA', func = EatIntroduceController.dashA)
+postbackRouter.add(message = '/_dashB', func = EatIntroduceController.dashB)
+postbackRouter.add(message = '/_dashC', func = EatIntroduceController.dashC)
 postbackRouter.add(message = '/glutenfree', func = EatIntroduceController.glutenfree)
 postbackRouter.add(message = '/glutenA', func = EatIntroduceController.glutenA)
 postbackRouter.add(message = '/glutenB', func = EatIntroduceController.glutenB)
@@ -77,9 +77,11 @@ def callback():
 def handle_text_message(event):
     text = event.message.text
     if text == 'advice':
-        buttons_template = ButtonsTemplate(title='飲食建議',text='Eating suggestion',
-        actions=[PostbackTemplateAction(label='生酮飲食',data='/keto'), PostbackTemplateAction(label='健身',data='/muscle'),
-        PostbackTemplateAction(label='得舒飲食',data='/dash'), PostbackTemplateAction(label='無麩質飲食',data='/glutenfree')])
+        buttons_template = ButtonsTemplate(title='飲食建議',text='Eating suggestion',actions=[
+            PostbackTemplateAction(label='生酮飲食',data='/keto'), 
+            PostbackTemplateAction(label='健身',data='/muscle'),
+            PostbackTemplateAction(label='得舒飲食',data='/dash'), 
+            PostbackTemplateAction(label='無麩質飲食',data='/glutenfree')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 def echo(event):
