@@ -69,7 +69,7 @@ class EatIntroduceController():
 
     @staticmethod
     def dash(event):
-        buttons_template = ButtonsTemplate(title='無麩質飲食',text='Gluten free',actions=[
+        buttons_template = ButtonsTemplate(title='得舒飲食',text='Dash',actions=[
             PostbackAction(label='介紹',data='/dashA'),
             PostbackAction(label='推薦食物',data='/dashB'),
             PostbackAction(label='禁忌食物',data='/dashC')])
@@ -93,7 +93,7 @@ class EatIntroduceController():
     def dashB(event):
         text_message1 = TextSendMessage(text='全穀類、蔬果、低脂乳製品、黃豆類')
         line_bot_api.reply_message(event.reply_token, text_message1)
-
+        
     @staticmethod
     def dashC(event):
         text_message1 = TextSendMessage(text='少量即可，不需全禁')
