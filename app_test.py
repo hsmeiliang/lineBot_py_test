@@ -1,9 +1,24 @@
 from __future__ import unicode_literals
 import os
 from flask import Flask, request, abort
-from linebot import LineBotApi, WebhookHandler
-from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageSendMessage, VideoSendMessage, LocationSendMessage
+from linebot import (LineBotApi, WebhookHandler)
+from linebot.exceptions import (LineBotApiError, InvalidSignatureError)
+from linebot.models import (
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,
+    SourceUser, SourceGroup, SourceRoom,
+    TemplateSendMessage, ConfirmTemplate, MessageAction,
+    ButtonsTemplate, ImageCarouselTemplate, ImageCarouselColumn, URIAction, MessageTemplateAction,
+    PostbackAction, DatetimePickerAction, URITemplateAction,
+    CameraAction, CameraRollAction, LocationAction,
+    CarouselTemplate, CarouselColumn, PostbackEvent,
+    StickerMessage, StickerSendMessage, LocationMessage, LocationSendMessage,
+    ImageMessage, VideoMessage, AudioMessage, FileMessage,
+    UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent,
+    FlexSendMessage, BubbleContainer, ImageComponent, BoxComponent,
+    TextComponent, IconComponent, ButtonComponent,
+    SeparatorComponent, QuickReply, QuickReplyButton, ImagemapSendMessage, BaseSize,
+    URIImagemapAction, ImagemapArea, MessageImagemapAction
+)
 
 app = Flask(__name__)
 #
@@ -12,6 +27,26 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi('eeca7lo2Ebs14wFbm4AXhvU/5qj569ywDfMxQ9a4cZaIqDKE4TFiHNNWvUaah2A2clVoV9McprdK6K/guNEZiSV8P6+HRgPr2Z3mB+3it2r3q2IDUJByKbPMoGwTrduDjjXZiW5xAp2FWQzSC0Tc7wdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('3b99db8557a3bb97f24e626b0d84837c')
+
+from controllers.EatIntroduceController import EatIntroduceController
+
+postbackRouter.add('/keto', EatIntroduceController.keto)
+postbackRouter.add('/ketoA', EatIntroduceController.ketoA)
+postbackRouter.add('/ketoB', EatIntroduceController.ketoB)
+postbackRouter.add('/ketoC', EatIntroduceController.ketoC)
+postbackRouter.add('/muscle', EatIntroduceController.muscle)
+postbackRouter.add('/muscleA', EatIntroduceController.muscleA)
+postbackRouter.add('/muscleB', EatIntroduceController.muscleB)
+postbackRouter.add('/muscleC', EatIntroduceController.muscleC)
+postbackRouter.add('/dash', EatIntroduceController.dash)
+postbackRouter.add('/dashA', EatIntroduceController.dashA)
+postbackRouter.add('/dashB', EatIntroduceController.dashB)
+postbackRouter.add('/dashC', EatIntroduceController.dashC)
+postbackRouter.add('/glutenfree', EatIntroduceController.glutenfree)
+postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
+postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
+postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
+
 
 # 接收 LINE 的資訊
 @app.route("/callback", methods=['POST'])
@@ -36,6 +71,14 @@ def callback():
 
 # 回傳 LINE 的資料
 @handler.add(MessageEvent, message=TextMessage)
+def handle_text_message(event):
+    text = event.message.text
+    if text == 'advice':
+        buttons_template = ButtonsTemplate(thumbnail_image_url=constant.imageUrlLogo, title='飲食建議',text='Eating suggestion',
+        actions=[PostbackAction(label='生酮飲食',data='/keto'), PostbackAction(label='健身',data='/muscle'),
+        PostbackAction(label='得舒飲食',data='/dash'), PostbackAction(label='無麩質飲食',data='/glutenfree')])
+        template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
 def echo(event):
     
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef": #因為LINE有些預設資料,我們在此排除
@@ -82,6 +125,13 @@ def echo(event):
                     preview_image_url="https://onepage.nownews.com/sites/default/files/2020-05/%E9%A6%96%E9%A0%81%E5%B0%81%E9%9D%A2-%E3%80%8C%E5%8F%AF%E6%86%90%E5%93%AA%E3%80%8D%E3%80%81%E3%80%8C%E9%BB%91%E4%BA%BA%E5%95%8F%E8%99%9F%E3%80%8D%E3%80%81%E3%80%8C%E6%88%91%E5%B0%B1%E7%88%9B%E3%80%8D%E9%80%99%E4%BA%9B%E6%A2%97%E5%9C%96%E7%9A%84%E7%94%B1%E4%BE%86%E4%BD%A0%E7%9F%A5%E9%81%93%E5%97%8E%EF%BC%9F.jpg"
                 )
             )
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     app.run()
