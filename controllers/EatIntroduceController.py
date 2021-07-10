@@ -70,9 +70,9 @@ class EatIntroduceController():
     @staticmethod
     def dash(event):
         buttons_template = ButtonsTemplate(title='無麩質飲食',text='Gluten free',actions=[
-            PostbackAction(label='介紹',data='/glutenA'),
-            PostbackAction(label='推薦食物',data='/glutenB'),
-            PostbackAction(label='禁忌食物',data='/glutenC')])
+            PostbackAction(label='介紹',data='/dashA'),
+            PostbackAction(label='推薦食物',data='/dashB'),
+            PostbackAction(label='禁忌食物',data='/dashC')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
