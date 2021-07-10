@@ -127,7 +127,10 @@ def echo(event):
                 )
             )
 
-
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    def postbackRouter.route(event):
+        return
 
 
 
