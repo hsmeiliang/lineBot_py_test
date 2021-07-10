@@ -17,7 +17,8 @@ from linebot.models import (
     FlexSendMessage, BubbleContainer, ImageComponent, BoxComponent,
     TextComponent, IconComponent, ButtonComponent,
     SeparatorComponent, QuickReply, QuickReplyButton, ImagemapSendMessage, BaseSize,
-    URIImagemapAction, ImagemapArea, MessageImagemapAction
+    URIImagemapAction, ImagemapArea, MessageImagemapAction,
+    PostbackTemplateAction
 )
 
 app = Flask(__name__)
@@ -77,8 +78,8 @@ def handle_text_message(event):
     text = event.message.text
     if text == 'advice':
         buttons_template = ButtonsTemplate(title='飲食建議',text='Eating suggestion',
-        actions=[PostbackAction(label='生酮飲食',data='/keto'), PostbackAction(label='健身',data='/muscle'),
-        PostbackAction(label='得舒飲食',data='/dash'), PostbackAction(label='無麩質飲食',data='/glutenfree')])
+        actions=[PostbackTemplateAction(label='生酮飲食',data='/keto'), PostbackTemplateAction(label='健身',data='/muscle'),
+        PostbackTemplateAction(label='得舒飲食',data='/dash'), PostbackTemplateAction(label='無麩質飲食',data='/glutenfree')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 def echo(event):
@@ -132,11 +133,6 @@ def echo(event):
 def handle_postback(event):
     if postbackRouter.route(event):
         return
-
-
-
-
-
 
 if __name__ == "__main__":
     app.run()
