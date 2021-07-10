@@ -49,7 +49,7 @@ postbackRouter.add(message = '/_glutenA', func = EatIntroduceController._glutenA
 postbackRouter.add(message = '/_glutenB', func = EatIntroduceController._glutenB)
 postbackRouter.add(message = '/_glutenC', func = EatIntroduceController._glutenC)
 print('done')
-
+# 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 
 # 接收 LINE 的資訊
 @app.route("/callback", methods=['POST'])
