@@ -129,7 +129,7 @@ def echo(event):
 
 @handler.add(PostbackEvent)
 def handle_postback(event):
-    def postbackRouter.route(event):
+    if postbackRouter.route(event):
         return
 
 
