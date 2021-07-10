@@ -1,6 +1,9 @@
 from linebot.models import PostbackAction, ButtonsTemplate, TemplateSendMessage, TextSendMessage
-from LineInitializer import line_bot_api, handler
-import constant
+# from LineInitializer import line_bot_api, handler
+# import constant
+from linebot import (LineBotApi, WebhookHandler)
+line_bot_api = LineBotApi('eeca7lo2Ebs14wFbm4AXhvU/5qj569ywDfMxQ9a4cZaIqDKE4TFiHNNWvUaah2A2clVoV9McprdK6K/guNEZiSV8P6+HRgPr2Z3mB+3it2r3q2IDUJByKbPMoGwTrduDjjXZiW5xAp2FWQzSC0Tc7wdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('3b99db8557a3bb97f24e626b0d84837c')
 
 class EatIntroduceController():
     def __init__(self):
@@ -8,7 +11,7 @@ class EatIntroduceController():
     
     @staticmethod
     def keto(event):
-        buttons_template = ButtonsTemplate(thumbnail_image_url=constant.imageUrlLogo, title='生酮飲食',text='Keto',actions=[
+        buttons_template = ButtonsTemplate(title='生酮飲食',text='Keto',actions=[
             PostbackAction(label='介紹',data='/ketoA'),
             PostbackAction(label='推薦食物',data='/ketoB'),
             PostbackAction(label='禁忌食物',data='/ketoC')])
@@ -37,7 +40,7 @@ class EatIntroduceController():
 
     @staticmethod
     def muscle(event):
-        buttons_template = ButtonsTemplate(thumbnail_image_url=constant.imageUrlLogo,title='健身',text='Muscle build',actions=[
+        buttons_template = ButtonsTemplate(title='健身',text='Muscle build',actions=[
             PostbackAction(label='介紹',data='/muscleA'),
             PostbackAction(label='推薦食物',data='/muscleB'),
             PostbackAction(label='禁忌食物',data='/muscleC')])
@@ -66,8 +69,7 @@ class EatIntroduceController():
 
     @staticmethod
     def dash(event):
-        buttons_template = ButtonsTemplate(thumbnail_image_url=constant.imageUrlLogo,
-                                    title='得舒飲食',text='Dash',actions=[
+        buttons_template = ButtonsTemplate(title='得舒飲食',text='Dash',actions=[
                                     PostbackAction(label='介紹',data='/dashA'),
                                     PostbackAction(label='推薦食物',data='/dashB'),
                                     PostbackAction(label='禁忌食物',data='/dashC')])
@@ -101,7 +103,7 @@ class EatIntroduceController():
 
     @staticmethod
     def glutenfree(event):
-        buttons_template = ButtonsTemplate(thumbnail_image_url=constant.imageUrlLogo,title='無麩質飲食',text='Gluten free',actions=[
+        buttons_template = ButtonsTemplate(title='無麩質飲食',text='Gluten free',actions=[
             PostbackAction(label='介紹',data='/glutenA'),
             PostbackAction(label='推薦食物',data='/glutenB'),
             PostbackAction(label='禁忌食物',data='/glutenC')])
