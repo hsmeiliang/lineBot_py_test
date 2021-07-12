@@ -20,6 +20,8 @@ from linebot.models import (
     URIImagemapAction, ImagemapArea, MessageImagemapAction
 )
 
+import BeaconMessage
+
 app = Flask(__name__)
 #
 # LINE 聊天機器人的基本資料
@@ -131,6 +133,19 @@ def echo(event):
 def handle_postback(event):
     if postbackRouter.route(event):
         return
+
+@handler.add(BeaconEvent)
+def handle_beacon(event):
+    if event.beacon.hwid == "":
+        message = 'success'
+    else:
+        message = 'fail'
+    
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text = message))
+
+
+    
+
 
 if __name__ == "__main__":
     app.run()
