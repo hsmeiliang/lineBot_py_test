@@ -20,7 +20,7 @@ from linebot.models import (
     URIImagemapAction, ImagemapArea, MessageImagemapAction
 )
 
-import BeaconMessage
+from BeaconMessage import BeaconMessage
 
 app = Flask(__name__)
 #
