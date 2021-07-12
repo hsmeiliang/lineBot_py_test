@@ -137,11 +137,14 @@ def handle_postback(event):
 @handler.add(BeaconEvent)
 def handle_beacon(event):
     if event.beacon.hwid == "":
-        message = 'success'
+        message = TextSendMessage(text = 'success')
     else:
-        message = 'fail'
-    
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(text = message))
+        message = TextSendMessage(text = 'not this position')
+    if event.beacon.type == 'enter':
+        message = TextSendMessage(text = 'enter')
+    else:
+        message = TextSendMessage(text = 'leave')
+    line_bot_api.reply_message(event.reply_token, message)
 
 
     
