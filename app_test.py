@@ -32,22 +32,22 @@ handler = WebhookHandler('3b99db8557a3bb97f24e626b0d84837c')
 from MessageRouter import MessageRouter
 from controllers.EatIntroduceController import EatIntroduceController
 postbackRouter = MessageRouter(routerType='postback')
-postbackRouter.add(message = '/keto', func = EatIntroduceController.keto)
-postbackRouter.add(message = '/_ketoA', func = EatIntroduceController._ketoA)
-postbackRouter.add(message = '/_ketoB', func = EatIntroduceController._ketoB)
-postbackRouter.add(message = '/_ketoC', func = EatIntroduceController._ketoC)
-postbackRouter.add(message = '/muscle', func = EatIntroduceController.muscle)
-postbackRouter.add(message = '/_muscleA', func = EatIntroduceController._muscleA)
-postbackRouter.add(message = '/_muscleB', func = EatIntroduceController._muscleB)
-postbackRouter.add(message = '/_muscleC', func = EatIntroduceController._muscleC)
-postbackRouter.add(message = '/dash', func = EatIntroduceController.dash)
-postbackRouter.add(message = '/_dashA', func = EatIntroduceController._dashA)
-postbackRouter.add(message = '/_dashB', func = EatIntroduceController._dashB)
-postbackRouter.add(message = '/_dashC', func = EatIntroduceController._dashC)
-postbackRouter.add(message = '/glutenfree', func = EatIntroduceController.glutenfree)
-postbackRouter.add(message = '/_glutenA', func = EatIntroduceController._glutenA)
-postbackRouter.add(message = '/_glutenB', func = EatIntroduceController._glutenB)
-postbackRouter.add(message = '/_glutenC', func = EatIntroduceController._glutenC)
+postbackRouter.add('/ketogenicDiet', EatIntroduceController.ketogenicDiet)
+postbackRouter.add('/ketoA', EatIntroduceController.ketoA)
+postbackRouter.add('/ketoB', EatIntroduceController.ketoB)
+postbackRouter.add('/ketoC', EatIntroduceController.ketoC)
+postbackRouter.add('/muscleDiet', EatIntroduceController.muscleDiet)
+postbackRouter.add('/muscleA', EatIntroduceController.muscleA)
+postbackRouter.add('/muscleB', EatIntroduceController.muscleB)
+postbackRouter.add('/muscleC', EatIntroduceController.muscleC)
+postbackRouter.add('/dashDiet', EatIntroduceController.dashDiet)
+postbackRouter.add('/dashA', EatIntroduceController.dashA)
+postbackRouter.add('/dashB', EatIntroduceController.dashB)
+postbackRouter.add('/dashC', EatIntroduceController.dashC)
+postbackRouter.add('/glutenfreeDiet', EatIntroduceController.glutenfreeDiet)
+postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
+postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
+postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
 print('done')
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 
@@ -77,11 +77,8 @@ def callback():
 def handle_text_message(event):
     text = event.message.text
     if text == 'advice':
-        buttons_template = ButtonsTemplate(title='飲食建議',text='Eating suggestion',actions=[
-            PostbackTemplateAction(label='生酮飲食',data='/keto'), 
-            PostbackTemplateAction(label='健身',data='/muscle'),
-            PostbackTemplateAction(label='得舒飲食',data='/dash'), 
-            PostbackTemplateAction(label='無麩質飲食',data='/glutenfree')])
+        buttons_template = ButtonsTemplate(title='飲食建議',text='Eating suggestion',actions=[PostbackAction(label='生酮飲食',data='/ketogenicDiet'), PostbackAction(label='健身',data='/muscleDiet'),
+                    PostbackAction(label='得舒飲食',data='/dashDiet'), PostbackAction(label='無麩質飲食',data='/glutenfreeDiet')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 def echo(event):

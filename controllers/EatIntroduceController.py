@@ -10,7 +10,7 @@ class EatIntroduceController():
         pass
     
     @staticmethod
-    def keto(event):
+    def ketogenicDiet(event):
         buttons_template = ButtonsTemplate(title='生酮飲食',text='Keto',actions=[
             PostbackTemplateAction(label='介紹',data='/_ketoA'),
             PostbackTemplateAction(label='推薦食物',data='/_ketoB'),
@@ -19,7 +19,7 @@ class EatIntroduceController():
         line_bot_api.reply_message(event.reply_token, template_message)
 
     @staticmethod
-    def _ketoA(event):
+    def ketoA(event):
         text_message1 = TextSendMessage(text='生酮飲食的特色在於低量碳水化合物的攝取(一天最多20克)，'+
                                         '使得身體必須燃燒自身脂肪產生酮體以提供足夠的熱量，能夠達到快速減重的效果')
         text_message2 = TextSendMessage(text='然而生酮飲食的熱量來源主要來自脂肪，攝取大量的脂肪會提升罹患心血管疾病的風險，且酮體代謝後'+
@@ -27,19 +27,19 @@ class EatIntroduceController():
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
-    def _ketoB(event):
+    def ketoB(event):
         text_message1 = TextSendMessage(text='主要為各式脂肪來源(肉類、植物油)和蔬菜，同時需要大量飲水(緩和酮酸濃度及避免身體缺水)')
         text_message2 = TextSendMessage(text='肉類、全脂鮮奶、奶油、蔬菜、植物油、堅果類')
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
-    def _ketoC(event):
+    def ketoC(event):
         text_message1 = TextSendMessage(text='碳水化合物一定要少，因此高澱粉、高糖分食物盡可能不要吃')
         text_message2 = TextSendMessage(text='五穀根莖類、水果、豆類、甜食、酒精、裹麵衣的油炸食物')
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
-    def muscle(event):
+    def muscleDiet(event):
         buttons_template = ButtonsTemplate(title='健身',text='Muscle build',actions=[
             PostbackAction(label='介紹',data='/_muscleA'),
             PostbackAction(label='推薦食物',data='/_muscleB'),
@@ -48,7 +48,7 @@ class EatIntroduceController():
         line_bot_api.reply_message(event.reply_token, template_message)
 
     @staticmethod
-    def _muscleA(event):
+    def muscleA(event):
         text_message1 = TextSendMessage(text='健身的目的在於提升肌肉量、減少體脂肪，能提升身體機能'+
                                         '雕塑體態，肌肉來源於蛋白質，因此健身者需要大量獲取蛋白質並減少醣類的攝取以避免增加體脂率')
         text_message2 = TextSendMessage(text='雖然醣類、脂肪會影響體脂，但如果不是想要走健美路線的話'+
@@ -57,18 +57,18 @@ class EatIntroduceController():
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
-    def _muscleB(event):
+    def muscleB(event):
         text_message1 = TextSendMessage(text='各種肉類(瘦肉，牛、雞為佳)、乳清蛋白、黃豆類、雞蛋(蛋白為佳)')
         line_bot_api.reply_message(event.reply_token, text_message1)
 
     @staticmethod
-    def _muscleC(event):
+    def muscleC(event):
         text_message1 = TextSendMessage(text='澱粉、脂肪減量或不吃')
         text_message2 = TextSendMessage(text='白飯、油炸食物、甜食')
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
-    def dash(event):
+    def dashDiet(event):
         buttons_template = ButtonsTemplate(title='得舒飲食',text='Dash',actions=[
             PostbackTemplateAction(label='介紹',data='/_dashA'),
             PostbackTemplateAction(label='推薦食物',data='/_dashB'),
@@ -77,7 +77,7 @@ class EatIntroduceController():
         line_bot_api.reply_message(event.reply_token, template_message)
 
     @staticmethod
-    def _dashA(event):
+    def dashA(event):
         text_message1 = TextSendMessage(text='得舒飲食是為了防止高血壓而發展出來的飲食法，'+
                                         '減少納、油脂的攝取，提升其他的礦物質和膳食纖維的攝取，'+
                                         '有助於降低血壓，得舒飲食原則上鼓勵吃素，但不用只吃素')
@@ -90,18 +90,18 @@ class EatIntroduceController():
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2, text_message3])
 
     @staticmethod
-    def _dashB(event):
+    def dashB(event):
         text_message1 = TextSendMessage(text='全穀類、蔬果、低脂乳製品、黃豆類')
         line_bot_api.reply_message(event.reply_token, text_message1)
 
     @staticmethod
-    def _dashC(event):
+    def dashC(event):
         text_message1 = TextSendMessage(text='少量即可，不需全禁')
         text_message2 = TextSendMessage(text='肉類、脂肪類、甜食(可選擇少油或水果代替)')
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
-    def glutenfree(event):
+    def glutenfreeDiet(event):
         buttons_template = ButtonsTemplate(title='無麩質飲食',text='Gluten free',actions=[
             PostbackTemplateAction(label='介紹',data='/_glutenA'),
             PostbackTemplateAction(label='推薦食物',data='/_glutenB'),
@@ -110,7 +110,7 @@ class EatIntroduceController():
         line_bot_api.reply_message(event.reply_token, template_message)
 
     @staticmethod
-    def _glutenA(event):
+    def glutenA(event):
         text_message1 = TextSendMessage(text='麩質，又稱麵筋(蛋白)，存在於許多穀物中的一種蛋白質，'+
                                         '尤其麥類的含量特別多，然而此種蛋白無法被人類完全分解，'+
                                         '有些人會對麩質分解後的產物產生過敏')
@@ -121,13 +121,13 @@ class EatIntroduceController():
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
-    def _glutenB(event):
+    def glutenB(event):
         text_message1 = TextSendMessage(text='原則上只有避免攝取麩質，推薦以米類或其他根莖類食物取代麥類')
         text_message2 = TextSendMessage(text='糙米、馬鈴薯、玉米、堅果類、豆類')
         line_bot_api.reply_message(event.reply_token, [text_message1, text_message2])
 
     @staticmethod
-    def _glutenC(event):
+    def glutenC(event):
         text_message1 = TextSendMessage(text='含麩質食物皆不要吃')
         text_message2 = TextSendMessage(text='麥類及其製品(麵包、麵條、麵粉)')
         text_message3 = TextSendMessage(text='另外需注意雜糧米、薏仁等產品，有的雜糧米會混有麥類而因大麥又稱小薏仁(或洋薏仁)，可能會有混淆之餘')
