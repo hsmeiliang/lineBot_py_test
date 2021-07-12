@@ -12,9 +12,9 @@ class EatIntroduceController():
     @staticmethod
     def ketogenicDiet(event):
         buttons_template = ButtonsTemplate(title='生酮飲食',text='Keto',actions=[
-            PostbackTemplateAction(label='介紹',data='/_ketoA'),
-            PostbackTemplateAction(label='推薦食物',data='/_ketoB'),
-            PostbackTemplateAction(label='禁忌食物',data='/_ketoC')])
+            PostbackTemplateAction(label='介紹',data='/ketoA'),
+            PostbackTemplateAction(label='推薦食物',data='/ketoB'),
+            PostbackTemplateAction(label='禁忌食物',data='/ketoC')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
@@ -41,9 +41,9 @@ class EatIntroduceController():
     @staticmethod
     def muscleDiet(event):
         buttons_template = ButtonsTemplate(title='健身',text='Muscle build',actions=[
-            PostbackAction(label='介紹',data='/_muscleA'),
-            PostbackAction(label='推薦食物',data='/_muscleB'),
-            PostbackAction(label='禁忌食物',data='/_muscleC')])
+            PostbackAction(label='介紹',data='/muscleA'),
+            PostbackAction(label='推薦食物',data='/muscleB'),
+            PostbackAction(label='禁忌食物',data='/muscleC')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text',template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
@@ -70,9 +70,9 @@ class EatIntroduceController():
     @staticmethod
     def dashDiet(event):
         buttons_template = ButtonsTemplate(title='得舒飲食',text='Dash',actions=[
-            PostbackTemplateAction(label='介紹',data='/_dashA'),
-            PostbackTemplateAction(label='推薦食物',data='/_dashB'),
-            PostbackTemplateAction(label='禁忌食物',data='/_dashC')])
+            PostbackTemplateAction(label='介紹',data='/dashA'),
+            PostbackTemplateAction(label='推薦食物',data='/dashB'),
+            PostbackTemplateAction(label='禁忌食物',data='/dashC')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
@@ -103,9 +103,9 @@ class EatIntroduceController():
     @staticmethod
     def glutenfreeDiet(event):
         buttons_template = ButtonsTemplate(title='無麩質飲食',text='Gluten free',actions=[
-            PostbackTemplateAction(label='介紹',data='/_glutenA'),
-            PostbackTemplateAction(label='推薦食物',data='/_glutenB'),
-            PostbackTemplateAction(label='禁忌食物',data='/_glutenC')])
+            PostbackTemplateAction(label='介紹',data='/glutenA'),
+            PostbackTemplateAction(label='推薦食物',data='/glutenB'),
+            PostbackTemplateAction(label='禁忌食物',data='/glutenC')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
