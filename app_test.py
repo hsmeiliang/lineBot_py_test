@@ -82,6 +82,10 @@ def handle_text_message(event):
                     PostbackAction(label='得舒飲食',data='/dashDiet'), PostbackAction(label='無麩質飲食',data='/glutenfreeDiet')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    if text == 'beacon':
+        beaconMessage = BeaconMessage()
+        message = FlexSendMessage(alt_text="飲食建議", contents=beaconMessage.buildComponent())
+        line_bot_api.reply_message(event.reply_token, message)
 def echo(event):
     
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef": #因為LINE有些預設資料,我們在此排除
