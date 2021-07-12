@@ -17,8 +17,7 @@ from linebot.models import (
     FlexSendMessage, BubbleContainer, ImageComponent, BoxComponent,
     TextComponent, IconComponent, ButtonComponent,
     SeparatorComponent, QuickReply, QuickReplyButton, ImagemapSendMessage, BaseSize,
-    URIImagemapAction, ImagemapArea, MessageImagemapAction,
-    PostbackTemplateAction
+    URIImagemapAction, ImagemapArea, MessageImagemapAction
 )
 
 app = Flask(__name__)

@@ -1,4 +1,4 @@
-from linebot.models import PostbackAction, ButtonsTemplate, TemplateSendMessage, TextSendMessage, PostbackTemplateAction
+from linebot.models import PostbackAction, ButtonsTemplate, TemplateSendMessage, TextSendMessage
 # from LineInitializer import line_bot_api, handler
 # import constant
 from linebot import (LineBotApi, WebhookHandler)
@@ -12,9 +12,9 @@ class EatIntroduceController():
     @staticmethod
     def ketogenicDiet(event):
         buttons_template = ButtonsTemplate(title='生酮飲食',text='Keto',actions=[
-            PostbackTemplateAction(label='介紹',data='/ketoA'),
-            PostbackTemplateAction(label='推薦食物',data='/ketoB'),
-            PostbackTemplateAction(label='禁忌食物',data='/ketoC')])
+            PostbackAction(label='介紹',data='/ketoA'),
+            PostbackAction(label='推薦食物',data='/ketoB'),
+            PostbackAction(label='禁忌食物',data='/ketoC')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
@@ -70,9 +70,9 @@ class EatIntroduceController():
     @staticmethod
     def dashDiet(event):
         buttons_template = ButtonsTemplate(title='得舒飲食',text='Dash',actions=[
-            PostbackTemplateAction(label='介紹',data='/dashA'),
-            PostbackTemplateAction(label='推薦食物',data='/dashB'),
-            PostbackTemplateAction(label='禁忌食物',data='/dashC')])
+            PostbackAction(label='介紹',data='/dashA'),
+            PostbackAction(label='推薦食物',data='/dashB'),
+            PostbackAction(label='禁忌食物',data='/dashC')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
@@ -103,9 +103,9 @@ class EatIntroduceController():
     @staticmethod
     def glutenfreeDiet(event):
         buttons_template = ButtonsTemplate(title='無麩質飲食',text='Gluten free',actions=[
-            PostbackTemplateAction(label='介紹',data='/glutenA'),
-            PostbackTemplateAction(label='推薦食物',data='/glutenB'),
-            PostbackTemplateAction(label='禁忌食物',data='/glutenC')])
+            PostbackAction(label='介紹',data='/glutenA'),
+            PostbackAction(label='推薦食物',data='/glutenB'),
+            PostbackAction(label='禁忌食物',data='/glutenC')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
 
