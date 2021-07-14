@@ -29,6 +29,7 @@ app = Flask(__name__)
 
 line_bot_api = LineBotApi('eeca7lo2Ebs14wFbm4AXhvU/5qj569ywDfMxQ9a4cZaIqDKE4TFiHNNWvUaah2A2clVoV9McprdK6K/guNEZiSV8P6+HRgPr2Z3mB+3it2r3q2IDUJByKbPMoGwTrduDjjXZiW5xAp2FWQzSC0Tc7wdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('3b99db8557a3bb97f24e626b0d84837c')
+hwID_list = ['0125f93bd3', '0126846195']
 
 from MessageRouter import MessageRouter
 from controllers.EatIntroduceController import EatIntroduceController
@@ -86,6 +87,14 @@ def handle_text_message(event):
         beaconMessage = BeaconMessage()
         message = FlexSendMessage(alt_text="飲食建議", contents=beaconMessage.buildComponent())
         line_bot_api.reply_message(event.reply_token, message)
+    if text == 'enter hwid_list[0]':
+        message = TextSendMessage(text = 'connect beacon 0 reply recommand food')
+        line_bot_api.reply_message(event.reply_token, message)
+    if text == '路線規劃':
+        # message = FlexSendMessage(alt_text = '推薦路線', contents = beaconMessage.road())
+        message = TextSendMessage(text = '推薦路線 由附近beacon資訊推測?')
+        line_bot_api.reply_message(event.reply_token, message)
+    
 def echo(event):
     
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef": #因為LINE有些預設資料,我們在此排除
