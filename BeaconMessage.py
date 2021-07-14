@@ -41,3 +41,46 @@ class BeaconMessage():
             )
         )
 
+    def showPath(recommendPath):
+        pass
+
+
+    def showList(recommendList):
+        dynamicContent = [
+            BoxComponent(
+                layout = 'vertical',
+                contents = [
+                    TextComponent(text='附近飲食推薦', weight='bold', size='xl'),
+                    TextComponent(text='以下是為你推薦附近的午餐菜單', weight='bold', size='xs', color='#555555')
+                ]
+            )
+        ]
+        if not recommendList:
+            dynamicContent.append(
+                BoxComponent(
+                    layout = 'vertical',
+                    contents = [
+                        TextComponent(text = '也許你該自己google')
+                    ]
+                )
+            )
+        else:
+            for result in recommendList:
+                dynamicContent.append(
+                    BoxComponent(
+                        layout='vertical',spacing='xs',margin='xl',
+                        contents=[
+                            BoxComponent(
+                                layout='horizontal',
+                                contents=[
+                                    TextComponent(text= result['shopName'] , weight='bold', size='md', color='#555555', flex=0),
+                                    TextComponent(text= ' 推 ' + result['mealName'] , weight='bold', size='md', color='#555555', flex=0),
+                                    TextComponent(text='$' + result['price'], weight='bold', size='md', color='#111111', align='end')
+                                ]
+                            ),
+                            TextComponent(text='餐點熱量為' + result['kcal'] + '大卡', weight='bold', size='xs', color='#555555'),
+                            ImageComponent(url=result['picture'], margin='none',align='center',size='4xl')
+                        ]
+                    )
+                )
+

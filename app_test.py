@@ -19,7 +19,7 @@ from linebot.models import (
     SeparatorComponent, QuickReply, QuickReplyButton, ImagemapSendMessage, BaseSize,
     URIImagemapAction, ImagemapArea, MessageImagemapAction
 )
-
+import json
 from BeaconMessage import BeaconMessage
 
 app = Flask(__name__)
@@ -73,7 +73,7 @@ def callback():
 ####
 ####
 ###
-
+status = 0
 # 回傳 LINE 的資料
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
@@ -90,10 +90,70 @@ def handle_text_message(event):
     if text == 'enter hwid_list[0]':
         message = TextSendMessage(text = 'connect beacon 0 reply recommand food')
         line_bot_api.reply_message(event.reply_token, message)
-    if text == '路線規劃':
-        # message = FlexSendMessage(alt_text = '推薦路線', contents = beaconMessage.road())
-        message = TextSendMessage(text = '推薦路線 由附近beacon資訊推測?')
-        line_bot_api.reply_message(event.reply_token, message)
+    if text == '路線':
+        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入預定運動路線長度(km):\n範例:3'),
+                                                    TextSendMessage(text = '若取消請輸入N')])
+        status = 17
+    if text == '附近餐點推薦':
+        line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入最低熱量需求(kcal):\n範例:1000'),
+                                                    TextSendMessage(text = '若取消請輸入N')])
+        status = 18
+    if status == 17:
+        if not isNum(text):
+            line_bot_api.reply_message(event.reply_message, TextSendMessage(text = '格式錯誤請重新輸入'))
+        else:
+            '''
+            length = event.postback.data
+            data = {
+                'userID': event.source.user_id,
+                'target_len': length
+            }
+            response = requests.post(config.PHP_SERVER+'mhealth/SportPath/path.php', data = data)
+            recommendPath = json.loads(response.text)
+            '''
+            recommendPath = json.loads({
+                'start_position': 123.123,
+                'start_name' : '古亭河濱公園',
+                'end_position': 128.125,
+                'end_name' : '馬場町紀念公園',
+                'length' : 3900,
+                'web' : 'https://reurl.cc/ZGEDn6'
+            })
+            message = FlexSendMessage(alt_text = '推薦路線', contents = beaconMessage.showPath(recommendPath))
+            line_bot_api.reply_message(event.reply_token, message)
+            status = 0
+    if status == 18:
+        if not isNum(text):
+            line_bot_api.reply_message(event.reply_message, TextSendMessage(text = '格式錯誤請重新輸入'))
+        else:
+            '''
+            kcal = event.postback.data
+            data = {
+                'userID': event.source.user_id,
+                'kcal': kcal
+            }
+            response = requests.post(config.PHP_SERVER+'mhealth/Shop/RecommendShop.php', data = data)
+            recommenList = json.loads(response.text)
+            '''
+            recommendList = json.loads([
+                {'shopName' : '早餐店',
+                'mealName' : '高熱量宅宅餐',
+                'kcal' : 1200,
+                'price' : 200,
+                'picture' : 'https://i.imgur.com/376iFbj.jpg'
+                },
+                {'shopName' : '早餐店2',
+                'mealName' : '高熱量宅宅餐2',
+                'kcal' : 2200,
+                'price' : 300,
+                'picture' : 'https://i.imgur.com/376iFbj.jpg'
+                }
+            ])
+            message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
+            line_bot_api.reply_message(event.reply_token, message)
+            status = 0
+
+    
     
 def echo(event):
     
@@ -160,7 +220,10 @@ def handle_beacon(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 
-    
+def isNum(data):
+    if len(data)>1 and data[0] == '0':
+        return False
+    return data.replace('.', '', 1).isnumeric()
 
 
 if __name__ == "__main__":
