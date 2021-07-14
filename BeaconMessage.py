@@ -45,7 +45,7 @@ class BeaconMessage():
         pass
 
 
-    def showList(recommendList):
+    def showList(self, recommendList):
         dynamicContent = [
             BoxComponent(
                 layout = 'vertical',
