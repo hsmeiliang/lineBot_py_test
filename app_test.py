@@ -136,7 +136,7 @@ def handle_text_message(event):
             response = requests.post(config.PHP_SERVER+'mhealth/Shop/RecommendShop.php', data = data)
             recommenList = json.loads(response.text)
             '''
-            recommendList = json.dumps([
+            recommendList = json.loads(json.dumps([
                 {'shopName' : '早餐店',
                 'mealName' : '高熱量宅宅餐',
                 'kcal' : 1200,
@@ -149,7 +149,8 @@ def handle_text_message(event):
                 'price' : 300,
                 'picture' : 'https://i.imgur.com/376iFbj.jpg'
                 }
-            ])
+            ]))
+            message = TextMessage(text='error')
             message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
             line_bot_api.reply_message(event.reply_token, message)
             status = 0
