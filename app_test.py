@@ -136,7 +136,7 @@ def handle_text_message(event):
             response = requests.post(config.PHP_SERVER+'mhealth/Shop/RecommendShop.php', data = data)
             recommenList = json.loads(response.text)
             '''
-            recommendList = json.loads([
+            recommendList = json.dumps([
                 {'shopName' : '早餐店',
                 'mealName' : '高熱量宅宅餐',
                 'kcal' : 1200,
