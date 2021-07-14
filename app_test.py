@@ -99,7 +99,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入最低熱量需求(kcal):\n範例:1000'),
                                                     TextSendMessage(text = '若取消請輸入N')])
         status = 18
-    if status == 17:
+    elif status == 17:
         if not isNum(text):
             line_bot_api.reply_message(event.reply_message, TextSendMessage(text = '格式錯誤請重新輸入'))
         else:
@@ -123,7 +123,7 @@ def handle_text_message(event):
             message = FlexSendMessage(alt_text = '推薦路線', contents = beaconMessage.showPath(recommendPath))
             line_bot_api.reply_message(event.reply_token, message)
             status = 0
-    if status == 18:
+    elif status == 18:
         if not isNum(text):
             line_bot_api.reply_message(event.reply_message, TextSendMessage(text = '格式錯誤請重新輸入'))
         else:
