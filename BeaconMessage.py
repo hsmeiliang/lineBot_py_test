@@ -83,4 +83,13 @@ class BeaconMessage():
                         ]
                     )
                 )
+        
+        bubble_container = BubbleContainer(
+            direction = 'ltr',
+            body = BoxComponent(
+                layout = 'vertical',
+                contents = dynamicContent
+            )
+        )
+        return bubble_container
 
