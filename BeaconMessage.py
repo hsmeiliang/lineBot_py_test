@@ -75,10 +75,10 @@ class BeaconMessage():
                                 contents=[
                                     TextComponent(text= result['shopName'] , weight='bold', size='md', color='#555555', flex=0),
                                     TextComponent(text= ' 推 ' + result['mealName'] , weight='bold', size='md', color='#555555', flex=0),
-                                    TextComponent(text='$' + result['price'], weight='bold', size='md', color='#111111', align='end')
+                                    TextComponent(text='$' + str(result['price']), weight='bold', size='md', color='#111111', align='end')
                                 ]
                             ),
-                            TextComponent(text='餐點熱量為' + result['kcal'] + '大卡', weight='bold', size='xs', color='#555555'),
+                            TextComponent(text='餐點熱量為' + str(result['kcal']) + '大卡', weight='bold', size='xs', color='#555555'),
                             ImageComponent(url=result['picture'], margin='none',align='center',size='4xl')
                         ]
                     )
