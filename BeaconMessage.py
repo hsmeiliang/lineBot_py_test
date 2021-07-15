@@ -63,17 +63,17 @@ class BeaconMessage():
             comp.append(ImageComponent(url=item['picture'], margin='none',align='center',size='4xl'))
 
         bubble = BubbleContainer(
-            direction = 'ltr',
-            headers=BoxComponent(
-                layout = 'vertical',
-                contents = [BoxComponent(
-                    layout = 'vertical',
-                    contents = [TextComponent(text='附近飲食推薦', weight='bold', size='xl')]
-                )],
-            body = BoxComponent(
-                    layout='vertical',spacing='xs',margin='xl',
-                    contents=comp
-                )
+            direction='ltr',
+            header = BoxComponent(
+                layout='vertical',
+                spacing='sm',
+                contents=[
+                    TextComponent(text='附近餐點推薦', weight='bold', size='xl', margin='md')
+                    ]
+                ),
+            body=BoxComponent(
+                layout='vertical',
+                contents=comp
             )
         )
         return bubble
