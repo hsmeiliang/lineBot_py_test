@@ -46,7 +46,7 @@ class BeaconMessage():
 
 
     def showList(self, recommendList):
-        comp = [SeparatorComponent(margin='md')]
+        comp = []
         for item in recommendList:
             comp.append(
                 BoxComponent(
