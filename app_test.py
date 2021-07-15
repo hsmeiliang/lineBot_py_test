@@ -106,16 +106,16 @@ def handle_text_message(event):
             '''
             length = event.postback.data
             data = {
-                'userID': event.source.user_id,
-                'target_len': length
+                'userID' : event.source.user_id,
+                'target_len' : length
             }
             response = requests.post(config.PHP_SERVER+'mhealth/SportPath/path.php', data = data)
             recommendPath = json.loads(response.text)
             '''
             recommendPath = json.loads(json.dumps([
-                'start_position' : 123.123,
+                'start_position' : '123.123',
                 'start_name' : '古亭河濱公園',
-                'end_position': 128.125,
+                'end_position' : '128.125',
                 'end_name' : '馬場町紀念公園',
                 'length' : 3900,
                 'web' : 'https://reurl.cc/ZGEDn6'
@@ -131,8 +131,8 @@ def handle_text_message(event):
             '''
             kcal = event.postback.data
             data = {
-                'userID': event.source.user_id,
-                'kcal': kcal
+                'userID' : event.source.user_id,
+                'kcal' : kcal
             }
             response = requests.post(config.PHP_SERVER+'mhealth/Shop/RecommendShop.php', data = data)
             recommenList = json.loads(response.text)
