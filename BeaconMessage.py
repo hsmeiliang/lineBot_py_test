@@ -73,7 +73,6 @@ class BeaconMessage():
                         TextComponent(text='以下是為你推薦附近的午餐菜單', weight='bold', size='xs', color='#555555')
                     ]
                 ),
-                SeparatorComponent(margin='md'),
                 BoxComponent(
                     layout='vertical',spacing='xs',margin='xl',
                     contents=comp
