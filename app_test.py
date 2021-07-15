@@ -113,7 +113,7 @@ def handle_text_message(event):
             recommendPath = json.loads(response.text)
             '''
             recommendPath = json.loads(json.dumps([
-                'start_position': 123.123,
+                'start_position' : 123.123,
                 'start_name' : '古亭河濱公園',
                 'end_position': 128.125,
                 'end_name' : '馬場町紀念公園',
