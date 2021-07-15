@@ -55,25 +55,30 @@ class BeaconMessage():
                         TextComponent(text=item['shopName'], weight='bold', size='md', color='#555555', flex=0),
                         TextComponent(text='推薦', weight='bold', size='xs', color='#555555', flex=0),
                         TextComponent(text=item['mealName'], weight='bold', size='md', color='#555555', flex=0),
-                        TextComponent(text='$' + str(item['price']), weight='bold', size='md', color='#111111', align='end'),
-                    ]
-                )
-            )
-            comp.append(TextComponent(text='餐點熱量為' + str(item['kcal']) + '大卡', weight='bold', size='xs', color='#555555'))
-            comp.append(ImageComponent(url=item['picture'], margin='none',align='center',size='4xl'))
-
-        bubble = BubbleContainer(
-            direction='ltr',
-            header = BoxComponent(
-                layout='vertical',
-                spacing='sm',
-                contents=[
-                    TextComponent(text='附近餐點推薦', weight='bold', size='xl', margin='md')
+                        TextComponent(text='$' + str(item['price']), weight='bold', size='md', color='#111111', align='end')
                     ]
                 ),
-            body=BoxComponent(
-                layout='vertical',
-                contents=comp
+                TextComponent(text='餐點熱量為' + str(item['kcal']) + '大卡', weight='bold', size='xs', color='#555555'),
+                ImageComponent(url=item['picture'], margin='none',align='center',size='4xl'),
+            )
+
+        bubble = BubbleContainer(
+            direction = 'ltr',
+            body = BoxComponent(
+                layout = 'vertical',
+                contents = [BoxComponent(
+                    layout = 'vertical',
+                    contents = [
+                        TextComponent(text='附近飲食推薦', weight='bold', size='xl'),
+                        TextComponent(text='以下是為你推薦附近的午餐菜單', weight='bold', size='xs', color='#555555'),
+                        TextComponent(text='點擊即可新增飲食紀錄', weight='bold', size='xs', color='#555555')
+                    ]
+                ),
+                BoxComponent(
+                    layout='vertical',spacing='xs',margin='xl',
+                    contents=comp
+                )
+                ]
             )
         )
         return bubble
