@@ -42,7 +42,6 @@ class BeaconMessage():
         )
 
     def showPath(recommendPath):
-        '''
         bubble = BubbleContainer(
             direction = 'ltr',
             body = BoxComponent(
@@ -84,8 +83,7 @@ class BeaconMessage():
         )
 
         return bubble
-        '''
-        pass
+
 
 
     def showList(self, recommendList):
@@ -96,7 +94,7 @@ class BeaconMessage():
                     layout='horizontal',
                     contents=[
                         TextComponent(text=item['shopName'], weight='bold', size='md', color='#555555', flex=0),
-                        TextComponent(text=' 推薦 ', weight='bold', size='xs', color='#555555', flex=0),
+                        TextComponent(text=' ' + '推薦'+' ', weight='bold', size='xs', color='#555555', flex=0),
                         TextComponent(text=item['mealName'], weight='bold', size='md', color='#555555', flex=0),
                         TextComponent(text='$' + str(item['price']), weight='bold', size='md', color='#111111', align='end')
                     ]
