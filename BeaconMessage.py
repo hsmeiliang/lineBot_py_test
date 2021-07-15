@@ -46,8 +46,23 @@ class BeaconMessage():
 
 
     def showList(self, recommendList):
-        
-        return BubbleContainer(
+        comp = []
+        for item in recommendList:
+            comp.append = [
+                BoxComponent(
+                    layout='horizontal',
+                    contents=[
+                        TextComponent(text=item['shopName'], weight='bold', size='md', color='#555555', flex=0),
+                        TextComponent(text='推薦', weight='bold', size='xs', color='#555555', flex=0),
+                        TextComponent(text=item['mealName'], weight='bold', size='md', color='#555555', flex=0),
+                        TextComponent(text='$' + str(item['price']), weight='bold', size='md', color='#111111', align='end')
+                    ]
+                ),
+                TextComponent(text='餐點熱量為' + str(item['kcal']) + '大卡', weight='bold', size='xs', color='#555555'),
+                ImageComponent(url=item['picture'], margin='none',align='center',size='4xl')
+            ]
+
+        bubble = BubbleContainer(
             direction = 'ltr',
             body = BoxComponent(
                 layout = 'vertical',
@@ -61,19 +76,10 @@ class BeaconMessage():
                 ),
                 BoxComponent(
                     layout='vertical',spacing='xs',margin='xl',
-                    contents=[
-                        BoxComponent(
-                            layout='horizontal',
-                            contents=[
-                                TextComponent(text=recommendList[0]['shopName'] + recommendList[0]['mealName'], weight='bold', size='md', color='#555555', flex=0),
-                                TextComponent(text='$' + str(recommendList[0]['price']), weight='bold', size='md', color='#111111', align='end')
-                            ]
-                        ),
-                        TextComponent(text='餐點熱量為' + str(recommendList[0]['kcal']) + '大卡', weight='bold', size='xs', color='#555555'),
-                        ImageComponent(url=recommendList[0]['picture'], margin='none',align='center',size='4xl')
-                    ]
+                    contents=comp
                 )
                 ]
             )
         )
+        return bubble
 
