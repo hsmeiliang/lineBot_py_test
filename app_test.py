@@ -84,24 +84,24 @@ def handle_text_message(event):
                     PostbackAction(label='得舒飲食',data='/dashDiet'), PostbackAction(label='無麩質飲食',data='/glutenfreeDiet')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
-    if text == 'beacon':
+    elif text == 'beacon':
         beaconMessage = BeaconMessage()
         message = FlexSendMessage(alt_text="飲食建議", contents=beaconMessage.buildComponent())
         line_bot_api.reply_message(event.reply_token, message)
-    if text == 'enter hwid_list[0]':
+    elif text == 'enter hwid_list[0]':
         message = TextSendMessage(text = 'connect beacon 0 reply recommand food')
         line_bot_api.reply_message(event.reply_token, message)
-    if text == '路線':
+    elif text == '路線':
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入預定運動路線長度(km):\n範例:3'),
                                                     TextSendMessage(text = '若取消請輸入N')])
         status = 17
-    if text == '附近餐點推薦':
+    elif text == '附近餐點推薦':
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入最低熱量需求(kcal):\n範例:1000'),
                                                     TextSendMessage(text = '若取消請輸入N')])
         status = 18
     elif status == 17:
         if not isNum(text):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '格式錯誤請重新輸入'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='格式錯誤，請重新輸入'))
         else:
             '''
             length = event.postback.data
@@ -126,7 +126,7 @@ def handle_text_message(event):
             status = 0
     elif status == 18:
         if not isNum(text):
-            line_bot_api.reply_message(event.reply_message, TextSendMessage(text = '格式錯誤請重新輸入'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text='格式錯誤，請重新輸入'))
         else:
             '''
             kcal = event.postback.data
