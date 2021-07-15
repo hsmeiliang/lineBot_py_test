@@ -101,7 +101,7 @@ def handle_text_message(event):
         status = 18
     elif status == 17:
         if not isNum(text):
-            line_bot_api.reply_message(event.reply_message, TextSendMessage(text = '格式錯誤請重新輸入'))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '格式錯誤請重新輸入'))
         else:
             '''
             length = event.postback.data
