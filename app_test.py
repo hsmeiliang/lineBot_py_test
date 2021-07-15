@@ -113,13 +113,13 @@ def handle_text_message(event):
             recommendPath = json.loads(response.text)
             '''
             recommendPath = json.loads(json.dumps([
-                'start_position' : '123.123',
+                {'start_position' : 123.123,
                 'start_name' : '古亭河濱公園',
-                'end_position' : '128.125',
+                'end_position' : 128.125,
                 'end_name' : '馬場町紀念公園',
                 'length' : 3900,
                 'web' : 'https://reurl.cc/ZGEDn6'
-            ]))
+                }]))
             beaconMessage = BeaconMessage()
             message = FlexSendMessage(alt_text = '推薦路線', contents = beaconMessage.showPath(recommendPath))
             line_bot_api.reply_message(event.reply_token, message)
