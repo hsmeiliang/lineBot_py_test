@@ -64,17 +64,16 @@ class BeaconMessage():
 
         bubble = BubbleContainer(
             direction = 'ltr',
-            body = BoxComponent(
+            headers=BoxComponent(
                 layout = 'vertical',
                 contents = [BoxComponent(
                     layout = 'vertical',
                     contents = TextComponent(text='附近飲食推薦', weight='bold', size='xl')
-                ),
-                BoxComponent(
+                )],
+            body = BoxComponent(
                     layout='vertical',spacing='xs',margin='xl',
                     contents=comp
                 )
-                ]
             )
         )
         return bubble
