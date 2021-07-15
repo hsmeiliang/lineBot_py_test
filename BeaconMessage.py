@@ -42,7 +42,48 @@ class BeaconMessage():
         )
 
     def showPath(recommendPath):
-        pass
+        
+        bubble = BubbleContainer(
+            direction = 'ltr',
+            body = BoxComponent(
+                layout = 'vertical',
+                contents = [BoxComponent(
+                    layout = 'vertical',
+                    contents = [
+                        TextComponent(text='推薦運動路線', weight='bold', size='xl'),
+                        TextComponent(text='以下是路線資訊', weight='bold', size='xs', color='#555555')
+                    ]
+                ),
+                BoxComponent(
+                    layout='vertical',spacing='xs',margin='xl',
+                    contents=[
+                        BoxComponent(
+                            layout='horizontal',
+                            contents=[
+                                TextComponent(text=recommendPath[start_name], weight='bold', size='md', color='#555555', flex=0),
+                                TextComponent(text=' -> ', weight='bold', size='md', color='#555555', flex=0),
+                                TextComponent(text=recommendPath[end_name], weight='bold', size='md', color='#555555', flex=0),
+                                TextComponent(text=str(recommendPath[length]), weight='bold', size='md', color='#111111', align='end')
+                            ]
+                        ),
+                        BoxComponent(
+                            layout='horizontal',
+                            contents=[
+                                TextComponent(text=recommendPath[start_position], weight='bold', size='md', color='#555555', flex=0),
+                                TextComponent(text=' -> ', weight='bold', size='md', color='#555555', flex=0),
+                                TextComponent(text=recommendPath[end_position], weight='bold', size='md', color='#555555', flex=0),
+                                TextComponent(text='     km', weight='bold', size='md', color='#111111', align='end')
+                            ]
+                        ),
+                        TextComponent(text=recommendPath[web], weight='bold', size='md', color='#111111', align='end'),
+                        TextComponent(text='點擊前往google map', weight='bold', size='xs', color='#555555')
+                    ]
+                )
+                ]
+            )
+        )
+
+        return bubble
 
 
     def showList(self, recommendList):
@@ -53,7 +94,7 @@ class BeaconMessage():
                     layout='horizontal',
                     contents=[
                         TextComponent(text=item['shopName'], weight='bold', size='md', color='#555555', flex=0),
-                        TextComponent(text='推薦', weight='bold', size='xs', color='#555555', flex=0),
+                        TextComponent(text=' 推薦 ', weight='bold', size='xs', color='#555555', flex=0),
                         TextComponent(text=item['mealName'], weight='bold', size='md', color='#555555', flex=0),
                         TextComponent(text='$' + str(item['price']), weight='bold', size='md', color='#111111', align='end')
                     ]
