@@ -46,7 +46,7 @@ class BeaconMessage():
 
 
     def showList(self, recommendList):
-        comp = []
+        comp = [SeparatorComponent(margin='md')]
         for item in recommendList:
             comp.append(
                 BoxComponent(
@@ -68,10 +68,7 @@ class BeaconMessage():
                 layout = 'vertical',
                 contents = [BoxComponent(
                     layout = 'vertical',
-                    contents = [
-                        TextComponent(text='附近飲食推薦', weight='bold', size='xl'),
-                        TextComponent(text='以下是為你推薦附近的午餐菜單', weight='bold', size='xs', color='#555555')
-                    ]
+                    contents = TextComponent(text='附近飲食推薦', weight='bold', size='xl')
                 ),
                 BoxComponent(
                     layout='vertical',spacing='xs',margin='xl',
