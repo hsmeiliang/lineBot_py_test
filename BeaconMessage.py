@@ -49,7 +49,7 @@ class BeaconMessage():
         comp = []
         for item in recommendList:
             comp.append(
-                BoxComponent(
+                [BoxComponent(
                     layout='horizontal',
                     contents=[
                         TextComponent(text=item['shopName'], weight='bold', size='md', color='#555555', flex=0),
@@ -60,7 +60,7 @@ class BeaconMessage():
                 ),
                 TextComponent(text='餐點熱量為' + str(item['kcal']) + '大卡', weight='bold', size='xs', color='#555555'),
                 ImageComponent(url=item['picture'], margin='none',align='center',size='4xl'),
-                SeparatorComponent(margin='md')
+                SeparatorComponent(margin='md')]
             )
 
         bubble = BubbleContainer(
