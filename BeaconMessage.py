@@ -71,7 +71,7 @@ class BeaconMessage():
                                 TextComponent(text=recommendPath[start_position], weight='bold', size='md', color='#555555', flex=0),
                                 TextComponent(text=' -> ', weight='bold', size='md', color='#555555', flex=0),
                                 TextComponent(text=recommendPath[end_position], weight='bold', size='md', color='#555555', flex=0),
-                                TextComponent(text='     km', weight='bold', size='md', color='#111111', align='end')
+                                TextComponent(text='km', weight='bold', size='md', color='#111111', align='end')
                             ]
                         ),
                         TextComponent(text=recommendPath[web], weight='bold', size='md', color='#111111', align='end'),
