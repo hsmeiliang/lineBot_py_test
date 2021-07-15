@@ -42,7 +42,7 @@ class BeaconMessage():
         )
 
     def showPath(recommendPath):
-        
+        '''
         bubble = BubbleContainer(
             direction = 'ltr',
             body = BoxComponent(
@@ -84,6 +84,8 @@ class BeaconMessage():
         )
 
         return bubble
+        '''
+        pass
 
 
     def showList(self, recommendList):

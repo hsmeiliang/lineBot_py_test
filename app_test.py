@@ -120,6 +120,7 @@ def handle_text_message(event):
                 'length' : 3900,
                 'web' : 'https://reurl.cc/ZGEDn6'
             ]))
+            beaconMessage = BeaconMessage()
             message = FlexSendMessage(alt_text = '推薦路線', contents = beaconMessage.showPath(recommendPath))
             line_bot_api.reply_message(event.reply_token, message)
             status = 0
