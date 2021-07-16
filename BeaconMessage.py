@@ -48,9 +48,9 @@ class BeaconMessage():
                 BoxComponent(
                     layout='horizontal',
                     contents=[
-                        TextComponent(text=item['start_name'], weight='bold', size='md', color='#111111', flex=0),
-                        TextComponent(text=' ' + '往'+' ', weight='bold', size='xs', color='#555555', flex=0),
-                        TextComponent(text=item['end_name'], weight='bold', size='md', color='#111111', flex=0, align='end')
+                        TextComponent(text=item['start_name'], weight='bold', size='xl', color='#111111', flex=0),
+                        TextComponent(text=' ' + '往'+' ', weight='bold', size='md', color='#555555', flex=0),
+                        TextComponent(text=item['end_name'], weight='bold', size='xl', color='#111111', flex=0, align='end')
                     ]
                 )
             )
@@ -65,7 +65,7 @@ class BeaconMessage():
                 )
             )
             '''
-            comp.append(TextComponent(text='路線總長:'+str(item['length'])+'km', weight='bold', size='md', color="#fa8072", align='end'))
+            comp.append(TextComponent(text='路線總長:'+str(item['length'])+'km', weight='bold', size='md', color="#a52a2a", align='end'))
             
 
         bubble = BubbleContainer(
