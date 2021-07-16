@@ -68,12 +68,16 @@ class BeaconMessage():
                 "type": "button",
                 "action": {
                     "type": "uri",
-                    "label": "Tap me",
+                    "label": "開啟google看詳細資訊",
                     "uri": item['web']
                 },
                 "style": "primary",
                 "color": "#0000ff"
             })
+            comp.append(ButtonComponent(
+                action=URIAction(label="開啟google看詳細資訊", uri=item['web']),
+                style='primary', color="#0000ff"
+            ))
 
         bubble = BubbleContainer(
             direction = 'ltr',
