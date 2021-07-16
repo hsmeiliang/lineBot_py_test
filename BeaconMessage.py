@@ -64,7 +64,16 @@ class BeaconMessage():
                 )
             )
             comp.append(TextComponent(text='路線總長:'+str(item['length'])+'km', weight='bold', size='md', color='#111111', align='end'))
-            comp.append(IconComponent(url=item['web']))
+            comp.append({
+                "type": "button",
+                "action": {
+                    "type": "uri",
+                    "label": "Tap me",
+                    "uri": item['web']
+                },
+                "style": "primary",
+                "color": "#0000ff"
+            })
 
         bubble = BubbleContainer(
             direction = 'ltr',
