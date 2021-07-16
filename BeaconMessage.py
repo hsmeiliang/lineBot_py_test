@@ -65,7 +65,7 @@ class BeaconMessage():
                 )
             )
             '''
-            comp.append(TextComponent(text='路線總長:'+str(item['length'])+'km', weight='bold', size='md', color='#111111', align='end'))
+            comp.append(TextComponent(text='路線總長:'+str(item['length'])+'km', weight='bold', size='md', color="#fa8072", align='end'))
             
 
         bubble = BubbleContainer(
@@ -79,12 +79,12 @@ class BeaconMessage():
                     ]
                 ),
                 BoxComponent(
-                    layout='vertical',spacing='xs',margin='xl',
+                    layout='vertical',spacing='md',margin='xl',
                     contents=comp
                 ),
                 ButtonComponent(
                     action=URIAction(label="開啟google看詳細資訊", uri=item['web']),
-                    style='primary', color="#0000ff"
+                    style='primary', color="#87cefa"
                 )
                 ]
             )
