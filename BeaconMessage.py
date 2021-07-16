@@ -49,11 +49,11 @@ class BeaconMessage():
                     layout='horizontal',
                     contents=[
                         TextComponent(text=item['start_name'], weight='bold', size='lg', color='#111111', flex=0),
-                        TextComponent(text=' ' + '往'+' ', weight='bold', size='md', color='#555555', flex=0),
-                        TextComponent(text=item['end_name'], weight='bold', size='lg', color='#111111', flex=0, align='end')
+                        TextComponent(text=' ' + '往'+' ', weight='bold', size='md', color='#555555', flex=0)
                     ]
                 )
             )
+            comp.append(TextComponent(text=item['end_name'], weight='bold', size='lg', color='#111111', flex=0, align='end'))
             '''
             comp.append(
                 BoxComponent(
@@ -75,7 +75,7 @@ class BeaconMessage():
                 contents = [BoxComponent(
                     layout = 'vertical',
                     contents = [
-                        TextComponent(text='推薦路線', weight='bold', size='xl')
+                        TextComponent(text='推薦路線', weight='bold', size='xl', background_color="#87cefa")
                     ]
                 ),
                 BoxComponent(
