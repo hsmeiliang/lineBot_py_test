@@ -75,7 +75,7 @@ class BeaconMessage():
                 contents = [BoxComponent(
                     layout = 'vertical',
                     contents = [
-                        TextComponent(text='推薦路線', weight='bold', size='xl', background_color="#87cefa")
+                        TextComponent(text='推薦路線', weight='bold', size='xl', color='#696969')
                     ]
                 ),
                 BoxComponent(
