@@ -100,14 +100,23 @@ class BeaconMessage():
                 BoxComponent(
                     layout='horizontal',
                     contents=[
-                        TextComponent(text=item['shopName'], weight='bold', size='lg', color='#111111', flex=0),
+                        TextComponent(text=item['shopName'], weight='bold', size='lg', color='#000000', flex=0),
                         TextComponent(text=' ' + '推薦'+' ', weight='bold', size='xs', color='#555555', flex=0),
-                        TextComponent(text=item['mealName'], weight='bold', size='md', color='#555555', flex=0),
+                        TextComponent(text=item['mealName'], weight='bold', size='md', color='#2f4f4f', flex=0),
                         TextComponent(text='$' + str(item['price']), weight='bold', size='md', color='#111111', align='end')
                     ]
                 )
             )
-            comp.append(TextComponent(text='餐點熱量為' + str(item['kcal']) + '大卡', weight='bold', size='xs', color='#555555'))
+            comp.append(
+                BoxComponent(
+                    layout='horizontal',
+                    contents=[
+                        TextComponent(text='餐點熱量為', weight='bold', size='xs', color='#111111', flex=0),
+                        TextComponent(text=str(item['kcal']) + '大卡', weight='bold', size='xs', color='#cd5c5c', flex=0)
+                    ]
+                )
+            )
+            # comp.append(TextComponent(text='餐點熱量為' + str(item['kcal']) + '大卡', weight='bold', size='xs', color='#555555'))
             comp.append(ImageComponent(url=item['picture'], margin='none',align='center',size='4xl'))
             comp.append(TextComponent(text=' ', size='md'))
 
@@ -118,7 +127,7 @@ class BeaconMessage():
                 contents = [BoxComponent(
                     layout = 'vertical',
                     contents = [
-                        TextComponent(text='附近飲食推薦', weight='bold', size='xl')
+                        TextComponent(text='附近飲食推薦', weight='bold', size='xl', color='#696969')
                     ]
                 ),
                 BoxComponent(
