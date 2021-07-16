@@ -64,7 +64,7 @@ class BeaconMessage():
                 )
             )
             comp.append(TextComponent(text='路線總長:'+str(item['length'])+'km', weight='bold', size='md', color='#111111', align='end'))
-            comp.append(IconComponent(url=item['web'], weight='bold', size='xs', color='#555555'))
+            comp.append(IconComponent(url=item['web']))
 
         bubble = BubbleContainer(
             direction = 'ltr',
