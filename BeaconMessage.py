@@ -48,8 +48,8 @@ class BeaconMessage():
                 BoxComponent(
                     layout='horizontal',
                     contents=[
-                        TextComponent(text=item['start_name'], weight='bold', size='md', color='#111111', flex=0, align='start'),
-                        TextComponent(text=' ' + '往'+' ', weight='bold', size='xs', color='#555555', flex=0, align='center'),
+                        TextComponent(text=item['start_name'], weight='bold', size='md', color='#111111', flex=0),
+                        TextComponent(text=' ' + '往'+' ', weight='bold', size='xs', color='#555555', flex=0),
                         TextComponent(text=item['end_name'], weight='bold', size='md', color='#111111', flex=0, align='end')
                     ]
                 )
