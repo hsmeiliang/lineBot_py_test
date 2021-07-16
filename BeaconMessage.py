@@ -59,7 +59,7 @@ class BeaconMessage():
                     layout='horizontal',
                     contents=[
                         TextComponent(text=str(item['start_position']), weight='bold', size='md', color='#555555', flex=0),
-                        TextComponent(text=str(item['end_position']), weight='bold', size='md', color='#555555', offset_start= '40px', align='end')
+                        TextComponent(text=str(item['end_position']), weight='bold', size='md', color='#555555', offset_start='40px')
                     ]
                 )
             )
