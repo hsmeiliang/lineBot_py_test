@@ -96,12 +96,12 @@ class BeaconMessage():
     def showList(self, recommendList):
         comp = []
         for item in recommendList:
+            comp.append(TextComponent(text=item['shopName'], weight='bold', size='lg', color='#000000', flex=0))
             comp.append(
                 BoxComponent(
                     layout='horizontal',
                     contents=[
-                        TextComponent(text=item['shopName'], weight='bold', size='lg', color='#000000', flex=0),
-                        TextComponent(text=' ' + '推薦'+' ', weight='bold', size='xs', color='#555555', flex=0),
+                        TextComponent(text=' ' + '推薦'+' ', weight='bold', size='xs', color='#ffd700', flex=0),
                         TextComponent(text=item['mealName'], weight='bold', size='md', color='#2f4f4f', flex=0),
                         TextComponent(text='$' + str(item['price']), weight='bold', size='md', color='#111111', align='end')
                     ]
@@ -112,7 +112,7 @@ class BeaconMessage():
                     layout='horizontal',
                     contents=[
                         TextComponent(text='餐點熱量為', weight='bold', size='xs', color='#111111', flex=0),
-                        TextComponent(text=str(item['kcal']) + '大卡', weight='bold', size='xs', color='#cd5c5c', flex=0)
+                        TextComponent(text=str(item['kcal']) + '大卡', weight='bold', size='md', color='#cd5c5c', flex=0)
                     ]
                 )
             )
