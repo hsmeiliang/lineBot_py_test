@@ -101,8 +101,8 @@ class BeaconMessage():
                 BoxComponent(
                     layout='horizontal',
                     contents=[
-                        TextComponent(text=' ' + '推薦'+' ', weight='bold', size='xs', color='#ffd700', flex=0),
-                        TextComponent(text=item['mealName'], weight='bold', size='md', color='#2f4f4f', flex=0),
+                        TextComponent(text=' ' + '推薦'+' ', weight='bold', size='xs', color='#ffa500', flex=0),
+                        TextComponent(text=item['mealName'], weight='bold', size='lg', color='#2f4f4f', flex=0),
                         TextComponent(text='$' + str(item['price']), weight='bold', size='md', color='#111111', align='end')
                     ]
                 )
@@ -111,7 +111,7 @@ class BeaconMessage():
                 BoxComponent(
                     layout='horizontal',
                     contents=[
-                        TextComponent(text='餐點熱量為', weight='bold', size='xs', color='#111111', flex=0),
+                        TextComponent(text='餐點熱量為 ', weight='bold', size='xs', color='#111111', flex=0),
                         TextComponent(text=str(item['kcal']) + '大卡', weight='bold', size='md', color='#cd5c5c', flex=0)
                     ]
                 )
@@ -131,7 +131,7 @@ class BeaconMessage():
                     ]
                 ),
                 BoxComponent(
-                    layout='vertical',spacing='xs',margin='xl',
+                    layout='vertical',spacing='md',margin='xl',
                     contents=comp
                 )
                 ]
