@@ -74,10 +74,13 @@ class BeaconMessage():
                 "style": "primary",
                 "color": "#0000ff"
             })
+            # 先用json寫
+            '''
             comp.append(ButtonComponent(
                 action=URIAction(label="開啟google看詳細資訊", uri=item['web']),
                 style='primary', color="#0000ff"
             ))
+            '''
 
         bubble = BubbleContainer(
             direction = 'ltr',
@@ -92,6 +95,10 @@ class BeaconMessage():
                 BoxComponent(
                     layout='vertical',spacing='xs',margin='xl',
                     contents=comp
+                ),
+                ButtonComponent(
+                    action=URIAction(label="開啟google看詳細資訊", uri=item['web']),
+                    style='primary', color="#0000ff"
                 )
                 ]
             )
