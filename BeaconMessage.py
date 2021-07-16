@@ -54,6 +54,7 @@ class BeaconMessage():
                     ]
                 )
             )
+            '''
             comp.append(
                 BoxComponent(
                     layout='horizontal',
@@ -63,6 +64,7 @@ class BeaconMessage():
                     ]
                 )
             )
+            '''
             comp.append(TextComponent(text='路線總長:'+str(item['length'])+'km', weight='bold', size='md', color='#111111', align='end'))
             
 
