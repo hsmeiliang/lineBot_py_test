@@ -143,5 +143,30 @@ class BeaconMessage():
         pass
     @staticmethod
     def nearbyFood(event):
-        pass
+        '''
+        kcal = event.postback.data
+        data = {
+            'userID' : event.source.user_id,
+            'kcal' : kcal
+        }
+        response = requests.post(config.PHP_SERVER+'mhealth/Shop/RecommendShop.php', data = data)
+        recommenList = json.loads(response.text)
+        '''
+        recommendList = json.loads(json.dumps([
+            {'shopName' : '早餐店',
+            'mealName' : '高熱量宅宅餐',
+            'kcal' : 1200,
+            'price' : 200,
+            'picture' : 'https://i.imgur.com/376iFbj.jpg'
+            },
+            {'shopName' : '早餐店2',
+            'mealName' : '高熱量宅宅餐2',
+            'kcal' : 2200,
+            'price' : 300,
+            'picture' : 'https://i.imgur.com/376iFbj.jpg'
+            }
+        ]))
+        # beaconMessage = BeaconMessage()
+        message = FlexSendMessage(alt_text = '餐點推薦', contents = showList(recommendList))
+        line_bot_api.reply_message(event.reply_token, message)
 
