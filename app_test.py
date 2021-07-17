@@ -21,6 +21,7 @@ from linebot.models import (
 )
 import json
 from BeaconMessage import BeaconMessage
+beaconMessage = BeaconMessage()
 
 app = Flask(__name__)
 #
@@ -50,6 +51,9 @@ postbackRouter.add('/glutenfreeDiet', EatIntroduceController.glutenfreeDiet)
 postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
 postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
+
+postbackRouter.add('/nearbyFood', beaconMessage.nearbyFood)
+postbackRouter.add('/noThanks', beaconMessage.noThanks)
 print('done')
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 
@@ -85,9 +89,12 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
     elif text == 'beacon':
-        beaconMessage = BeaconMessage()
-        message = FlexSendMessage(alt_text="飲食建議", contents=beaconMessage.buildComponent())
-        line_bot_api.reply_message(event.reply_token, message)
+        # beaconMessage = BeaconMessage()
+        # message = FlexSendMessage(alt_text="飲食建議", contents=beaconMessage.buildComponent())
+        # line_bot_api.reply_message(event.reply_token, message)
+        buttons_template = ButtonsTemplate(title='是否開起餐點推薦',text='Eating suggestion',actions=[PostbackAction(label='點我開始推薦',data='/nearbyFood'), PostbackAction(label='不用了，謝謝',data='/noThanks')])
+        template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
     elif text == 'enter hwid_list[0]':
         message = TextSendMessage(text = 'connect beacon 0 reply recommand food')
         line_bot_api.reply_message(event.reply_token, message)
@@ -120,7 +127,7 @@ def handle_text_message(event):
                 'length' : 3900,
                 'web' : 'https://reurl.cc/ZGEDn6'
                 }]))
-            beaconMessage = BeaconMessage()
+            # beaconMessage = BeaconMessage()
             message = FlexSendMessage(alt_text = '推薦路線', contents = beaconMessage.showPath(recommendPath))
             line_bot_api.reply_message(event.reply_token, message)
             status = 0
@@ -151,7 +158,7 @@ def handle_text_message(event):
                 'picture' : 'https://i.imgur.com/376iFbj.jpg'
                 }
             ]))
-            beaconMessage = BeaconMessage()
+            # beaconMessage = BeaconMessage()
             message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
             line_bot_api.reply_message(event.reply_token, message)
             status = 0
@@ -217,7 +224,17 @@ def handle_beacon(event):
     else:
         message = TextSendMessage(text = 'not this position')
     if event.beacon.type == 'enter':
-        message = TextSendMessage(text = 'enter')
+        message = TextSendMessage(text = 'enter beacon')
+        data = {
+            'updateInfo' : 'newBeacon',
+            'userID' : event.source.user_id,
+            'newBeacon' : event.beacon.hwid
+        }
+        response = requests.post(config.PHP_SERVER+'mhealth/lineUser/updateUserInfo.php', data = data)
+        # line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '點選進入餐點推薦'))
+        buttons_template = ButtonsTemplate(title='是否開起餐點推薦',text='Eating suggestion',actions=[PostbackAction(label='點我開始推薦',data='/nearbyFood'), PostbackAction(label='不用了，謝謝',data='/noThanks')])
+        template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
     else:
         message = TextSendMessage(text = 'leave')
     line_bot_api.reply_message(event.reply_token, message)

@@ -138,4 +138,10 @@ class BeaconMessage():
             )
         )
         return bubble
+    @staticmethod
+    def noThanks(event):
+        pass
+    @staticmethod
+    def nearbyFood(event):
+        pass
 
