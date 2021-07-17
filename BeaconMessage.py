@@ -139,11 +139,11 @@ class BeaconMessage():
             )
         )
         return bubble
-    @staticmethod
-    def noThanks(event):
+
+    def noThanks(self, event):
         pass
-    @staticmethod
-    def nearbyFood(event):
+
+    def nearbyFood(self, event):
         '''
         kcal = event.postback.data
         data = {
@@ -168,6 +168,6 @@ class BeaconMessage():
             }
         ]))
         # beaconMessage = BeaconMessage()
-        message = FlexSendMessage(alt_text = '餐點推薦', contents = showList(recommendList))
+        message = FlexSendMessage(alt_text = '餐點推薦', contents = self.showList(recommendList))
         line_bot_api.reply_message(event.reply_token, message)
 
