@@ -148,7 +148,7 @@ class BeaconMessage():
         kcal = event.postback.data
         data = {
             'userID' : event.source.user_id,
-            'kcal' : kcal
+            'kcal' : 10
         }
         response = requests.post(config.PHP_SERVER+'mhealth/Shop/RecommendShop.php', data = data)
         recommenList = json.loads(response.text)
