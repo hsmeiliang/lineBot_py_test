@@ -141,7 +141,7 @@ class BeaconMessage():
         return bubble
 
     def noThanks(self, event):
-        pass
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '好的\n輸入\'附近餐點推薦\'也可查看'))
 
     def nearbyFood(self, event):
         '''
