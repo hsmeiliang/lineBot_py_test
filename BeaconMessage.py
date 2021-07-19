@@ -141,95 +141,51 @@ class BeaconMessage():
         return bubble
 
     def nearbyFood(self, recommendList):
-        return FlexSendMessage(alt_text= '餐點推薦', contents={
-          "type": "carousel",
-          "contents": [
-            {
-              "type": "bubble",
-              "size": "micro",
-              "hero": {
-                "type": "image",
-                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip10.jpg",
-                "size": "full",
-                "aspectMode": "cover",
-                "aspectRatio": "320:213"
-              },
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "Brown Cafe",
-                    "weight": "bold",
-                    "size": "sm",
-                    "wrap": "true"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                      {
-                        "type": "icon",
-                        "size": "xs",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                      },
-                      {
-                        "type": "icon",
-                        "size": "xs",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                      },
-                      {
-                        "type": "icon",
-                        "size": "xs",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                      },
-                      {
-                        "type": "icon",
-                        "size": "xs",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-                      },
-                      {
-                        "type": "icon",
-                        "size": "xs",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
-                      },
-                      {
-                        "type": "text",
-                        "text": "4.0",
-                        "size": "xs",
-                        "color": "#8c8c8c",
-                        "margin": "md",
-                        "flex": 0
-                      }
+        Carousel_template = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+            columns=[
+                CarouselColumn(
+                    thumbnail_image_url='顯示在開頭的大圖片網址',
+                    title='this is menu1',
+                    text='description1',
+                    actions=[
+                        PostbackTemplateAction(
+                            label='postback1',
+                            text='postback text1',
+                            data='action=buy&itemid=1'
+                        ),
+                        MessageTemplateAction(
+                            label='message1',
+                            text='message text1'
+                        ),
+                        URITemplateAction(
+                            label='uri1',
+                            uri='http://example.com/1'
+                        )
                     ]
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "東京旅行",
-                            "wrap": "true",
-                            "color": "#8c8c8c",
-                            "size": "xs",
-                            "flex": 5
-                          }
-                        ]
-                      }
+                ),
+                CarouselColumn(
+                    thumbnail_image_url='顯示在開頭的大圖片網址',
+                    title='this is menu2',
+                    text='description2',
+                    actions=[
+                        PostbackTemplateAction(
+                            label='postback2',
+                            text='postback text2',
+                            data='action=buy&itemid=2'
+                        ),
+                        MessageTemplateAction(
+                            label='message2',
+                            text='message text2'
+                        ),
+                        URITemplateAction(
+                            label='連結2',
+                            uri='http://example.com/2'
+                        )
                     ]
-                  }
-                ],
-                "spacing": "sm",
-                "paddingAll": "13px"
-              }
-            }
-          ]
-        }
+                )
+            ]
         )
+        )
+        return Carousel_template
