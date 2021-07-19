@@ -109,7 +109,8 @@ def handle_text_message(event):
             'picture' : 'https://i.imgur.com/376iFbj.jpg'
             }
         ]))
-        message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.nearbyFood(recommendList))
+        message = [TextSendMessage(text= '附近餐點推薦'),
+            FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.nearbyFood(recommendList))]
         line_bot_api.reply_message(event.reply_token, message)
     elif text == 'enter hwid_list[0]':
         message = TextSendMessage(text = 'connect beacon 0 reply recommand food')
@@ -264,7 +265,8 @@ def handle_beacon(event):
             'picture' : 'https://i.imgur.com/376iFbj.jpg'
             }
         ]))
-        message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.nearbyFood(recommendList))
+        message = [TextSendMessage(text= '附近餐點推薦'),
+            FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.nearbyFood(recommendList))]
     else:
         message = TextSendMessage(text = 'leave')
     line_bot_api.reply_message(event.reply_token, message)
