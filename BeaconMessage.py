@@ -141,41 +141,39 @@ class BeaconMessage():
         return bubble
 
     def nearbyFood(self, recommendList):
-        Carousel_template = TemplateSendMessage(
-            alt_text='Carousel template',
-            template=CarouselTemplate(
-                columns=[
-                    CarouselColumn(
-                        #thumbnail_image_url='顯示在開頭的大圖片網址',
-                        title='this is menu1',
-                        text='description1',
-                        actions=[
-                            MessageTemplateAction(
-                                label='message1',
-                                text='message text1'
-                            ),
-                            URITemplateAction(
-                                label='uri1',
-                                uri='https://translate.google.com.tw/'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        #thumbnail_image_url='顯示在開頭的大圖片網址',
-                        title='this is menu2',
-                        text='description2',
-                        actions=[
-                            MessageTemplateAction(
-                                label='message2',
-                                text='message text2'
-                            ),
-                            URITemplateAction(
-                                label='連結2',
-                                uri='https://translate.google.com.tw/'
-                            )
-                        ]
-                    )
-                ]
+        bubble = []
+        for item in recommendList:
+            comp = []
+            comp.append(TextComponent(text=item['shopName'], weight='bold', size='lg', color='#000000', flex=0))
+            comp.append(
+                BoxComponent(
+                    layout='horizontal',
+                    contents=[
+                        TextComponent(text=' ' + '推薦'+' ', weight='bold', size='xs', color='#ffa500', flex=0),
+                        TextComponent(text=item['mealName'], weight='bold', size='lg', color='#2f4f4f', flex=0),
+                        TextComponent(text='$' + str(item['price']), weight='bold', size='md', color='#111111', align='end')
+                    ]
+                )
             )
-        )
-        return Carousel_template
+            comp.append(
+                BoxComponent(
+                    layout='horizontal',
+                    contents=[
+                        TextComponent(text='餐點熱量為 ', weight='bold', size='xs', color='#111111', flex=0),
+                        TextComponent(text=str(item['kcal']) + '大卡', weight='bold', size='md', color='#cd5c5c', flex=0)
+                    ]
+                )
+            )
+            # comp.append(TextComponent(text='餐點熱量為' + str(item['kcal']) + '大卡', weight='bold', size='xs', color='#555555'))
+            comp.append(ImageComponent(url=item['picture'], margin='none',align='center',size='4xl'))
+            comp.append(TextComponent(text=' ', size='md'))
+            bubble.append(BubbleContainer(
+                direction='ltr',
+                body = BoxComponent(
+                    layout='vertical',
+                    contents=comp
+                )
+            ))
+
+        carousel = CarouselContainer(bubble)
+        return carousel

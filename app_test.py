@@ -110,7 +110,8 @@ def handle_text_message(event):
             }
         ]))
         # message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
-        message = beaconMessage.nearbyFood(recommendList)
+        # message = beaconMessage.nearbyFood(recommendList)
+        message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.nearbyFood(recommendList))
         line_bot_api.reply_message(event.reply_token, message)
     elif text == 'enter hwid_list[0]':
         message = TextSendMessage(text = 'connect beacon 0 reply recommand food')
