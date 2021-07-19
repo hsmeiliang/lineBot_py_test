@@ -145,7 +145,6 @@ class BeaconMessage():
 
     def nearbyFood(self, event):
         '''
-        kcal = event.postback.data
         data = {
             'userID' : event.source.user_id,
             'kcal' : 10

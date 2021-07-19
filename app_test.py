@@ -89,12 +89,30 @@ def handle_text_message(event):
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
     elif text == 'beacon':
-        # beaconMessage = BeaconMessage()
-        # message = FlexSendMessage(alt_text="飲食建議", contents=beaconMessage.buildComponent())
-        # line_bot_api.reply_message(event.reply_token, message)
-        buttons_template = ButtonsTemplate(title='是否開起餐點推薦',text='Eating suggestion',actions=[PostbackAction(label='點我開始推薦',data='/nearbyFood'), PostbackAction(label='不用了，謝謝',data='/noThanks')])
-        template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
-        line_bot_api.reply_message(event.reply_token, template_message)
+        '''
+        data = {
+            'userID' : event.source.user_id,
+            'kcal' : 10
+        }
+        response = requests.post(config.PHP_SERVER+'mhealth/Shop/RecommendShop.php', data = data)
+        recommenList = json.loads(response.text)
+        '''
+        recommendList = json.loads(json.dumps([
+            {'shopName' : '早餐店',
+            'mealName' : '高熱量宅宅餐',
+            'kcal' : 1200,
+            'price' : 200,
+            'picture' : 'https://i.imgur.com/376iFbj.jpg'
+            },
+            {'shopName' : '早餐店2',
+            'mealName' : '高熱量宅宅餐2',
+            'kcal' : 2200,
+            'price' : 300,
+            'picture' : 'https://i.imgur.com/376iFbj.jpg'
+            }
+        ]))
+        message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
+        line_bot_api.reply_message(event.reply_token, message)
     elif text == 'enter hwid_list[0]':
         message = TextSendMessage(text = 'connect beacon 0 reply recommand food')
         line_bot_api.reply_message(event.reply_token, message)
@@ -111,10 +129,9 @@ def handle_text_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='格式錯誤，請重新輸入'))
         else:
             '''
-            length = event.postback.data
             data = {
                 'userID' : event.source.user_id,
-                'target_len' : length
+                'target_len' : text
             }
             response = requests.post(config.PHP_SERVER+'mhealth/SportPath/path.php', data = data)
             recommendPath = json.loads(response.text)
@@ -136,10 +153,9 @@ def handle_text_message(event):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='格式錯誤，請重新輸入'))
         else:
             '''
-            kcal = event.postback.data
             data = {
                 'userID' : event.source.user_id,
-                'kcal' : kcal
+                'kcal' : text
             }
             response = requests.post(config.PHP_SERVER+'mhealth/Shop/RecommendShop.php', data = data)
             recommenList = json.loads(response.text)
@@ -232,9 +248,30 @@ def handle_beacon(event):
         }
         response = requests.post(config.PHP_SERVER+'mhealth/lineUser/updateUserInfo.php', data = data)
         # line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '點選進入餐點推薦'))
-        buttons_template = ButtonsTemplate(title='是否開起餐點推薦',text='Eating suggestion',actions=[PostbackAction(label='點我開始推薦',data='/nearbyFood'), PostbackAction(label='不用了，謝謝',data='/noThanks')])
-        template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
-        line_bot_api.reply_message(event.reply_token, template_message)
+        '''
+        data = {
+            'userID' : event.source.user_id,
+            'kcal' : 10
+        }
+        response = requests.post(config.PHP_SERVER+'mhealth/Shop/RecommendShop.php', data = data)
+        recommenList = json.loads(response.text)
+        '''
+        recommendList = json.loads(json.dumps([
+            {'shopName' : '早餐店',
+            'mealName' : '高熱量宅宅餐',
+            'kcal' : 1200,
+            'price' : 200,
+            'picture' : 'https://i.imgur.com/376iFbj.jpg'
+            },
+            {'shopName' : '早餐店2',
+            'mealName' : '高熱量宅宅餐2',
+            'kcal' : 2200,
+            'price' : 300,
+            'picture' : 'https://i.imgur.com/376iFbj.jpg'
+            }
+        ]))
+        message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
+        line_bot_api.reply_message(event.reply_token, message)
     else:
         message = TextSendMessage(text = 'leave')
     line_bot_api.reply_message(event.reply_token, message)
