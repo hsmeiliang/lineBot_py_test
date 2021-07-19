@@ -52,8 +52,6 @@ postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
 postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
 
-postbackRouter.add('/nearbyFood', beaconMessage.nearbyFood)
-postbackRouter.add('/noThanks', beaconMessage.noThanks)
 print('done')
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 
@@ -111,7 +109,8 @@ def handle_text_message(event):
             'picture' : 'https://i.imgur.com/376iFbj.jpg'
             }
         ]))
-        message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
+        # message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
+        message = beaconMessage.nearbyFood(recommendList)
         line_bot_api.reply_message(event.reply_token, message)
     elif text == 'enter hwid_list[0]':
         message = TextSendMessage(text = 'connect beacon 0 reply recommand food')
