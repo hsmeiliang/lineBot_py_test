@@ -109,8 +109,6 @@ def handle_text_message(event):
             'picture' : 'https://i.imgur.com/376iFbj.jpg'
             }
         ]))
-        # message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
-        # message = beaconMessage.nearbyFood(recommendList)
         message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.nearbyFood(recommendList))
         line_bot_api.reply_message(event.reply_token, message)
     elif text == 'enter hwid_list[0]':
@@ -144,7 +142,6 @@ def handle_text_message(event):
                 'length' : 3900,
                 'web' : 'https://reurl.cc/ZGEDn6'
                 }]))
-            # beaconMessage = BeaconMessage()
             message = FlexSendMessage(alt_text = '推薦路線', contents = beaconMessage.showPath(recommendPath))
             line_bot_api.reply_message(event.reply_token, message)
             status = 0
@@ -174,7 +171,6 @@ def handle_text_message(event):
                 'picture' : 'https://i.imgur.com/376iFbj.jpg'
                 }
             ]))
-            # beaconMessage = BeaconMessage()
             message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
             line_bot_api.reply_message(event.reply_token, message)
             status = 0
@@ -240,14 +236,12 @@ def handle_beacon(event):
     else:
         message = TextSendMessage(text = 'not this position')
     if event.beacon.type == 'enter':
-        message = TextSendMessage(text = 'enter beacon')
         data = {
             'updateInfo' : 'newBeacon',
             'userID' : event.source.user_id,
             'newBeacon' : event.beacon.hwid
         }
         response = requests.post(config.PHP_SERVER+'mhealth/lineUser/updateUserInfo.php', data = data)
-        # line_bot_api.reply_message(event.reply_token, TextSendMessage(text = '點選進入餐點推薦'))
         '''
         data = {
             'userID' : event.source.user_id,
@@ -270,8 +264,7 @@ def handle_beacon(event):
             'picture' : 'https://i.imgur.com/376iFbj.jpg'
             }
         ]))
-        message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
-        line_bot_api.reply_message(event.reply_token, message)
+        message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.nearbyFood(recommendList))
     else:
         message = TextSendMessage(text = 'leave')
     line_bot_api.reply_message(event.reply_token, message)
