@@ -43,5 +43,7 @@ class HealthMessage():
         pass
     
     def showList(self, youtubeLinks):
-        message = TextSendMessage(text=youtubeLinks[0])
+        message=[]
+        for item in youtubeLinks:
+            message.append(TextSendMessage(text=item))
         return message
