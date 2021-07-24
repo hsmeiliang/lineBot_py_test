@@ -22,6 +22,7 @@ from linebot.models import (
 import json
 from BeaconMessage import BeaconMessage
 beaconMessage = BeaconMessage()
+from GetHealthEdu import GetYoutubeLink, HealthMessage
 
 app = Flask(__name__)
 #
@@ -86,6 +87,12 @@ def handle_text_message(event):
                     PostbackAction(label='得舒飲食',data='/dashDiet'), PostbackAction(label='無麩質飲食',data='/glutenfreeDiet')])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
+    elif text == 'video':
+        getlinks = GetYoutubeLink()
+        table=getlinks.getList()
+        healthMessage=HealthMessage()
+        message=healthMessage(table)
+        line_bot_api.reply_message(event.reply_token, message)
     elif text == 'beacon':
         '''
         data = {
