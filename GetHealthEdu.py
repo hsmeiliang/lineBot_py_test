@@ -39,7 +39,7 @@ class GetYoutubeLink():
         return self._table
 
 class HealthMessage():
-    def __init__:
+    def __init__(self):
         pass
     
     def showList(self, youtubeLinks):
