@@ -91,7 +91,7 @@ def handle_text_message(event):
         getlinks = GetYoutubeLink()
         table=getlinks.getList()
         healthMessage=HealthMessage()
-        message=healthMessage(table)
+        message=healthMessage.showList(table)
         line_bot_api.reply_message(event.reply_token, message)
     elif text == 'beacon':
         '''
