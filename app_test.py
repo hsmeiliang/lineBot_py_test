@@ -22,7 +22,7 @@ from linebot.models import (
 import json
 from BeaconMessage import BeaconMessage
 beaconMessage = BeaconMessage()
-from GetHealthEdu import GetYoutubeLink, HealthMessage
+from GetHealthEdu import GetYoutubeLink, GetNewsLink, HealthMessage
 
 app = Flask(__name__)
 #
@@ -94,6 +94,12 @@ def handle_text_message(event):
         message=healthMessage.showList(table)
         line_bot_api.reply_message(event.reply_token, message)
         ####
+    elif text == 'news':
+        getlinks = GetNewsLink()
+        links, titles = getlinks.getLinkList()
+        healthMessage = HealthMessage()
+        message = healthMessage.showNews(links, titles)
+        line_bot_api.reply_message(event.reply_token, message)
     elif text == 'beacon':
         '''
         data = {

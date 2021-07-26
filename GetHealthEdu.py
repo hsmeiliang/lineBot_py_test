@@ -78,3 +78,9 @@ class HealthMessage():
         for item in youtubeLinks:
             message.append(TextSendMessage(text=item))
         return message
+    
+    def showNews(self, links, titles):
+        message = []
+        for i in range(len(links)):
+            message.append(TextSendMessage(text= titles[i]+'\n'+links[i]))
+        return message
