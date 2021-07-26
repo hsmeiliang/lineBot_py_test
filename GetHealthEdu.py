@@ -51,10 +51,10 @@ class GetNewsLink():
         r = requests.get(url)
         link = 'https://www.hpa.gov.tw'
         n = 0
-        for i in reg.findall(r.text):
+        for item in reg.findall(r.text):
             if n >1:
                 break
-            temp=requests.get(link+i)
+            temp=requests.get(link+item)
             title=''
             for i in range (30):
                 ch=temp.text[temp.text.index('description')+22+i]
@@ -62,7 +62,7 @@ class GetNewsLink():
                     break
                 title+=ch
             self._titles.append(title)
-            self._links.append(link+i)
+            self._links.append(link+item)
             n+=1
     def getLinkLists(self):
         self.newsLinks(self._urls[0], self._t0)
