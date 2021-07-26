@@ -89,14 +89,14 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, template_message)
     elif text == 'video':
         getlinks = GetYoutubeLink()
-        table=getlinks.getLinkList()
+        table=getlinks.getLinkLists()
         healthMessage=HealthMessage()
         message=healthMessage.showList(table)
         line_bot_api.reply_message(event.reply_token, message)
         ####
     elif text == 'news':
         getlinks = GetNewsLink()
-        links, titles = getlinks.getLinkList()
+        links, titles = getlinks.getLinkLists()
         healthMessage = HealthMessage()
         message = healthMessage.showNews(links, titles)
         line_bot_api.reply_message(event.reply_token, message)

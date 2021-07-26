@@ -28,7 +28,7 @@ class GetYoutubeLink():
                     self._table.append(link)
                     num+=1
                 
-    def getLinkList(self):
+    def getLinkLists(self):
         if len(self._lists) == 0:
             for i in self._urls:
                 self.youtubeLinks(i)
