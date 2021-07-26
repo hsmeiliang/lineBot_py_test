@@ -62,7 +62,7 @@ class GetNewsLink():
                     break
                 title+=ch
             self._titles.append(title)
-            self._links.append(link)
+            self._links.append(link+i)
             n+=1
     def getLinkLists(self):
         self.newsLinks(self._urls[0], self._t0)
