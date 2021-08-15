@@ -73,9 +73,9 @@ def HealthRank(user_lineID, result):
             BoxComponent(
                 layout='horizontal',
                 contents = [
-                    TextComponent(text = str(i+1) + ".  ", weight=weight, color=color),
-                    TextComponent(text = user_name, weight=weight, color=color),
-                    TextComponent(text = str(value[i]), weight=weight, color=color)
+                    TextComponent(text = str(i+1) + ".  ", weight=weight, color=color, flex=0),
+                    TextComponent(text = user_name, weight=weight, color=color, flex=0),
+                    TextComponent(text = str(value[i]), weight=weight, color=color, flex=0)
                 ]
             )
         )
@@ -83,21 +83,21 @@ def HealthRank(user_lineID, result):
     print(comp)
     
     bubble = BubbleContainer(
-            direction = 'ltr',
-            body = BoxComponent(
+        direction = 'ltr',
+        body = BoxComponent(
+            layout = 'vertical',
+            contents = [BoxComponent(
                 layout = 'vertical',
-                contents = [BoxComponent(
-                    layout = 'vertical',
-                    contents = [
-                        TextComponent(text='附近飲食推薦', weight='bold', size='xl', color='#696969')
-                    ]
-                ),
-                BoxComponent(
-                    layout='vertical',spacing='md',margin='xl',
-                    contents=comp
-                )
+                contents = [
+                    TextComponent(text='附近飲食推薦', weight='bold', size='xl', color='#696969')
                 ]
+            ),
+            BoxComponent(
+                layout='vertical',spacing='md',margin='xl',
+                contents=comp
             )
+            ]
         )
+    )
     return bubble
     
