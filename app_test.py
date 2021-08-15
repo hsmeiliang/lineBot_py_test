@@ -52,7 +52,7 @@ postbackRouter.add('/glutenfreeDiet', EatIntroduceController.glutenfreeDiet)
 postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
 postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
-line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage('push message'))
+
 
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 
@@ -63,8 +63,6 @@ def callback():
 
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
-
-    print(body)
 
     try:
         handler.handle(body, signature)
@@ -298,3 +296,4 @@ def isNum(data):
 
 if __name__ == "__main__":
     app.run()
+    line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage('push message'))
