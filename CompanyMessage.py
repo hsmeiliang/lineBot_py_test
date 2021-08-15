@@ -94,13 +94,16 @@ def HealthRank(user_lineID, result):
                     ]
                 ),
                 BoxComponent(
-                    layout = 'vertical',spacing='md',margin='xl',
+                    layout = 'horizontal',spacing='md',margin='xl',
                     contents = [
                         TextComponent(text = "No.  "),
                         TextComponent(text = "name"),
                         TextComponent(text = "value", align='end'),
-                        comp
                     ]
+                ),
+                BoxComponent(
+                    layout = 'vertical',
+                    contents = comp
                 )
             ]
         )
