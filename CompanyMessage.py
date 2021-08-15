@@ -96,7 +96,7 @@ def HealthRank(user_lineID, result):
                         TextComponent(text = "value", align='end'),
                         SeparatorComponent(margin='md'),
                     ]
-                )
+                ),
                 BoxComponent(
                     layout='vertical',spacing='md',margin='xl',
                     contents=comp
