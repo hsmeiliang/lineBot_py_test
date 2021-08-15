@@ -51,6 +51,7 @@ def PushMessage(line_bot_api):
 
 def HealthRank(user_lineID, result):
     comp = []
+    comp.append(TextComponent(text = "No." + "       " + "name" + "        " + "value", color=color, flex=0))
     i = 0
     value = result["sortedData"]
     length = len(value)
@@ -80,10 +81,6 @@ def HealthRank(user_lineID, result):
                 contents = [
                     TextComponent(text='health ranking', weight='bold', size='xl', color='#696969')
                 ]
-            ),
-            BoxComponent(
-                layout = 'horizontal',
-                contents = TextComponent(text = "No." + "       " + "name" + "        " + "value", color=color, flex=0)
             ),
             BoxComponent(
                 layout='vertical',spacing='md',margin='lg',
