@@ -130,7 +130,7 @@ def handle_text_message(event):
                 ]
             }
         ))
-        message = FlexSendMessage(alt_text = 'health ranking', contents = CompanyMessage.Ranking(result))
+        message = FlexSendMessage(alt_text = 'health ranking', contents = CompanyMessage.HealthRank(result))
         line_bot_api.reply_message(event.reply_token, message)
     elif text == 'beacon':
         '''
