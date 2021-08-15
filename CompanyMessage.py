@@ -10,11 +10,11 @@ def PushMessage(line_bot_api):
     response = requests.post('https://virtserver.swaggerhub.com/v54dt/mhealth/1.0.0/notification')
     warningmsg = json.loads(response.text)
     '''
-    warningmsg = json.loads({
+    warningmsg = json.loads(json.dumps({
         "lineID": "Ufbdbbd3db1cc8d560f45d5cd2519b290",
         "subject": "Health risk",
         "content": "Your health risk is high."
-    })
+    )})
     message = TextSendMessage(text = 'push message')
     line_bot_api.push_message(warningmsg['lineid'], message)
 
