@@ -61,14 +61,14 @@ def HealthRank(user_lineID, result):
         print(lineID, value[i])
         color = '#696969'
 
-        user_name = "xxx"
+        user_name = "一二三"
 
         if lineID == user_lineID:
             color = '#4169E1'
         if i == 0:
             color = '#ffa500'
         
-        comp.append(TextComponent(text = str(i+1) + ".      " + user_name + "                 " + str(value[i]), size = 'xl', color=color, flex=0))
+        comp.append(TextComponent(text = str(i+1) + ".      " + user_name + "            " + str(value[i]), size = 'xl', color=color, flex=0))
         i+=1
     print(comp)
     
