@@ -107,8 +107,10 @@ def handle_text_message(event):
     elif text == 'id':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(event.source.user_id))
     elif text == '排行榜':
+        '''
         response = requests.post()
         result = json.loads(response.text)
+        '''
         result = json.loads(json.dumps(
             {
                 "category": "exerciseDuration",
