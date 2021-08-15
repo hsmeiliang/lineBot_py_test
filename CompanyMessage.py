@@ -68,9 +68,9 @@ def HealthRank(user_lineID, result):
         if i == 0:
             color = '#ffa500'
         
-        space = "            "
+        space = "             "
         if value[i] < 0:
-            space = "         "
+            space = "           "
 
         comp.append(TextComponent(text = str(i+1) + ".      " + user_name + space + str(value[i]), size = 'xl', color=color, flex=0))
         i+=1
