@@ -77,7 +77,6 @@ def callback():
 ####
 ###
 status = 0
-line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage('push message'))
 
 # 回傳 LINE 的資料
 @handler.add(MessageEvent, message=TextMessage)
@@ -298,4 +297,5 @@ def isNum(data):
 
 
 if __name__ == "__main__":
+    line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage('push message'))
     app.run()
