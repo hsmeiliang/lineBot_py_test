@@ -59,16 +59,13 @@ def HealthRank(user_lineID, result):
         lineID = lineIDList[i]
         print(lineID, value[i])
         color = '#696969'
-        weight = 'None'
 
         user_name = "xxx"
 
         if lineID == user_lineID:
             color = '#4169E1'
-            weight = 'blod'
-        if i == 1:
+        if i == 0:
             color = '#ffa500'
-            weight = 'blod'
         
         comp.append(TextComponent(text = str(i+1) + ".  " + user_name + "    " + str(value[i]), color=color, flex=0))
         i+=1
@@ -85,7 +82,11 @@ def HealthRank(user_lineID, result):
                 ]
             ),
             BoxComponent(
-                layout='vertical',spacing='md',margin='xl',
+                layout = 'horizontal',
+                contents = TextComponent(text = "No." + "       " + "name" + "        " + "value", color=color, flex=0)
+            )
+            BoxComponent(
+                layout='vertical',spacing='md',margin='lg',
                 contents=comp
             )
             ]
