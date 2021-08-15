@@ -91,7 +91,12 @@ def HealthRank(user_lineID, result):
                 contents = [
                     TextComponent(text='附近飲食推薦', weight='bold', size='xl', color='#696969')
                 ]
-            )]
+            ),
+            BoxComponent(
+                layout='vertical',spacing='md',margin='xl',
+                contents=comp
+            )
+            ]
         )
     )
     return bubble
