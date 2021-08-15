@@ -24,7 +24,7 @@ from BeaconMessage import BeaconMessage
 beaconMessage = BeaconMessage()
 from GetHealthEdu import GetYoutubeLink, GetNewsLink, HealthMessage
 
-app = Flask(__name__)
+
 #
 # LINE 聊天機器人的基本資料
 # LINE 的 channel_access_token, channel_secret 換成在 Line Developer 裡的資料
@@ -32,7 +32,8 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('eeca7lo2Ebs14wFbm4AXhvU/5qj569ywDfMxQ9a4cZaIqDKE4TFiHNNWvUaah2A2clVoV9McprdK6K/guNEZiSV8P6+HRgPr2Z3mB+3it2r3q2IDUJByKbPMoGwTrduDjjXZiW5xAp2FWQzSC0Tc7wdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('3b99db8557a3bb97f24e626b0d84837c')
 hwID_list = ['0125f93bd3', '0126846195']
-
+line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage('push message'))
+app = Flask(__name__)
 from MessageRouter import MessageRouter
 from controllers.EatIntroduceController import EatIntroduceController
 postbackRouter = MessageRouter(routerType='postback')
@@ -296,4 +297,4 @@ def isNum(data):
 
 if __name__ == "__main__":
     app.run()
-    line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage(text = 'push message'))
+    #line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage(text = 'push message'))
