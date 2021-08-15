@@ -23,7 +23,7 @@ def PushMessage(line_bot_api):
             layout = 'vertical',
             contents = [
                 BoxComponent(
-                    layout = 'vertical',,
+                    layout = 'vertical',
                     contents = [
                         TextComponent(text = warningmsg['subject'], weight='bold', size='xl', color='#696969')
                     ]
@@ -38,7 +38,7 @@ def PushMessage(line_bot_api):
                     layout = 'vertical',spacing='md',margin='xl',
                     contents = [
                         TextComponent(text = "dear" + user_name + ":"),
-                        TextComponent(text = warningmsg['content'], weight='bold', size='md', color='#cd5c5c')
+                        TextComponent(text = warningmsg['content'], weight='bold', size='md', color='#cd5c5c'),
                         TextComponent(text = "Please checkout your body info.")
                     ]
                 )
