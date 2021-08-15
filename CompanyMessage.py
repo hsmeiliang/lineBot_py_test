@@ -75,7 +75,7 @@ def HealthRank(user_lineID, result):
                 ]
             )
         )
-        comp.append(SeparatorComponent(margin='md'))
+        
     
     bubble = BubbleContainer(
         direction = 'ltr',
@@ -93,8 +93,8 @@ def HealthRank(user_lineID, result):
                     contents = [
                         TextComponent(text = "No.  "),
                         TextComponent(text = "name"),
-                        TextComponent(text = "value", align='end'),
-                        SeparatorComponent(margin='md'),
+                        TextComponent(text = "value", align='end')
+                        
                     ]
                 ),
                 BoxComponent(
