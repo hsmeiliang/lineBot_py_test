@@ -15,6 +15,35 @@ def PushMessage(line_bot_api):
         "subject": "Health risk",
         "content": "Your health risk is high."
     }))
-    message = TextSendMessage(text = 'push message')
+
+
+    message = BubbleContainer(
+        direction = 'ltr',
+        body = BoxComponent(
+            layout = 'vertical',
+            contents = [
+                BoxComponent(
+                    layout = 'vertical',,
+                    contents = [
+                        TextComponent(text = warningmsg['subject'], weight='bold', size='xl', color='#696969')
+                    ]
+                ),
+                BoxComponent(
+                    layout = 'vertical',
+                    contents = [
+                    ImageComponent(url = 'https://cdn4.iconfinder.com/data/icons/coronavirus-color/64/doctor-advise-warning-suggestion-avatar-1024.png')
+                    ]
+                ),
+                BoxComponent(
+                    layout = 'vertical',spacing='md',margin='xl',
+                    contents = [
+                        TextComponent(text = "dear" + user_name + ":"),
+                        TextComponent(text = warningmsg['content'], weight='bold', size='md', color='#cd5c5c')
+                        TextComponent(text = "Please checkout your body info.")
+                    ]
+                )
+            ]
+        )
+    )
     line_bot_api.push_message(warningmsg['lineID'], message)
 
