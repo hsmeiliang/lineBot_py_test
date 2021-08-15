@@ -63,6 +63,7 @@ import time
 def job():
     CompanyMessage.PushMessage(line_bot_api)
 schedule.every(2).minutes.do(job)
+schedule.run_pending()
 
 
 # 接收 LINE 的資訊
@@ -258,7 +259,6 @@ def isNum(data):
     return data.replace('.', '', 1).isnumeric()
 
 
-while __name__ == "__main__":
+if __name__ == "__main__":
     app.run()
-    schedule.run_pending()
-    time.sleep(1)
+    
