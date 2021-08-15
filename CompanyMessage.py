@@ -86,7 +86,10 @@ def HealthRank(user_lineID, result):
         direction = 'ltr',
         body = BoxComponent(
             layout = 'vertical',
-            contents = comp
+            contents = BoxComponent(
+                layout = 'vertical',
+                contents = comp
+            )
         )
     )
     return bubble
