@@ -54,6 +54,7 @@ def HealthRank(user_lineID, result):
     i = 1
     value = result["sortedData"]
     for lineID in result["lineIDList"]:
+        print(lineID, value[i])
         color = '#696969'
         weight = 'normal'
 
@@ -93,13 +94,9 @@ def HealthRank(user_lineID, result):
                     contents = [
                         TextComponent(text = "No.  "),
                         TextComponent(text = "name"),
-                        TextComponent(text = "value", align='end')
-                        
+                        TextComponent(text = "value", align='end'),
+                        comp
                     ]
-                ),
-                BoxComponent(
-                    layout='vertical',spacing='md',margin='xl',
-                    contents=comp
                 )
             ]
         )
