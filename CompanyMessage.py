@@ -16,5 +16,5 @@ def PushMessage(line_bot_api):
         "content": "Your health risk is high."
     }))
     message = TextSendMessage(text = 'push message')
-    line_bot_api.push_message(warningmsg['lineid'], message)
+    line_bot_api.push_message(warningmsg['lineID'], message)
 
