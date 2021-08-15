@@ -57,29 +57,9 @@ postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
 
 
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
-import schedule
-from datetime import datetime
-from threading import Timer
-import time
-def timedTask():
-    Timer(10, task).start()
-def task():
-    print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-import schedule  
-import time  
-  
-def job():  
-    print("I'm working...")  
-  
-schedule.every(10).seconds.do(job) 
-'''
-CompanyMessage.PushMessage(line_bot_api)
-def job():
-    CompanyMessage.PushMessage(line_bot_api)
-if datetime.datetime.now()
-schedule.every(2).minutes.do(job)
-schedule.run_pending()
-'''
+
+# CompanyMessage.PushMessage(line_bot_api)
+
 
 # 接收 LINE 的資訊
 @app.route("/callback", methods=['POST'])
@@ -126,6 +106,31 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     elif text == 'id':
         line_bot_api.reply_message(event.reply_token, TextSendMessage(event.source.user_id))
+    elif text == '排行榜':
+        response = requests.post()
+        result = json.loads(response.text)
+        result = json.loads(json.dumps(
+            {
+                "category": "exerciseDuration",
+                "lineIDList": [
+                [
+                    'Ufbdbbd3db1cc8d560f45d5cd2519b290',
+                    'Ufbdbbd3db1cc8d560f45d5cd2519b290',
+                    'Ufbdbbd3db1cc8d560f45d5cd2519b290',
+                    'Ufbdbbd3db1cc8d560f45d5cd2519b290'
+                ]
+                ],
+                "sortedData": [
+                    40,
+                    15,
+                    13,
+                    -34
+                ]
+            }
+        ))
+        message = [TextSendMessage(text= '辦公室健康排行'),
+            FlexSendMessage(alt_text = '健康排行', contents = CompanyMessage.HealthRank(event.source.user_id,result))]
+        line_bot_api.reply_message(event.reply_token, message)
     elif text == 'beacon':
         '''
         data = {
@@ -276,7 +281,3 @@ def isNum(data):
 
 if __name__ == "__main__":
     app.run()
-    while True:  
-        schedule.run_pending()  
-        time.sleep(1)  
-    
