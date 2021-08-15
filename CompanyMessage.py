@@ -83,7 +83,7 @@ def HealthRank(user_lineID, result):
             contents = [BoxComponent(
                 layout = 'vertical',
                 contents = [
-                    TextComponent(text=result["category"].capitalize() + ranking, weight='bold', size='xl', color='#000000')
+                    TextComponent(text=result["category"].capitalize() + "Ranking", weight='bold', size='xl', color='#000000')
                 ]
             ),
             BoxComponent(
