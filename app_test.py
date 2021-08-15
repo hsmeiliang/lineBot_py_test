@@ -296,4 +296,4 @@ def isNum(data):
 
 if __name__ == "__main__":
     app.run()
-    line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage('push message'))
+    line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage(text = 'push message'))
