@@ -55,7 +55,7 @@ def HealthRank(user_lineID, result):
     value = result["sortedData"]
     length = len(value)
     lineIDList = result["lineIDList"][0]
-    for i in range(length):
+    for i in range(2):
         lineID = lineIDList[i]
         print(lineID, value[i])
         color = '#696969'
