@@ -70,19 +70,7 @@ def HealthRank(user_lineID, result):
             color = '#ffa500'
             weight = 'blod'
         
-        comp.append(
-            BoxComponent(
-                layout='horizontal',
-                contents = [
-                    '''
-                    TextComponent(text = str(i+1) + ".  ", weight=weight, color=color, flex=0),
-                    TextComponent(text = user_name, weight=weight, color=color, flex=0),
-                    TextComponent(text = str(value[i]), weight=weight, color=color, flex=0)
-                    '''
-                    TextComponent(text='餐點熱量為 ', weight='bold', size='xs', color='#111111', flex=0)
-                ]
-            )
-        )
+        comp.append(TextComponent(text = str(i+1) + ".  " + user_name + "    " + str(value[i]), , weight=weight, color=color, flex=0))
         i+=1
     print(comp)
     
