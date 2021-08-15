@@ -51,9 +51,10 @@ def PushMessage(line_bot_api):
 
 def HealthRank(user_lineID, result):
     comp = []
-    i = 1
+    i = 0
     value = result["sortedData"]
-    for lineID in result["lineIDList"]:
+    lineIDList = result["lineIDList"]
+    for lineID in lineIDList:
         print(lineID, value[i])
         color = '#696969'
         weight = 'normal'
@@ -70,12 +71,13 @@ def HealthRank(user_lineID, result):
             BoxComponent(
                 layout='horizontal',
                 contents = [
-                    TextComponent(text = str(i) + ".  ", weight=weight, color=color),
+                    TextComponent(text = str(i+1) + ".  ", weight=weight, color=color),
                     TextComponent(text = user_name, weight=weight, color=color),
                     TextComponent(text = str(value[i]), weight=weight, color=color)
                 ]
             )
         )
+        i+=1
         
     
     bubble = BubbleContainer(
