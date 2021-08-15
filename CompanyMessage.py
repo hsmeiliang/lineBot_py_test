@@ -54,7 +54,7 @@ def HealthRank(user_lineID, result):
     i = 0
     value = result["sortedData"]
     length = len(value)
-    lineIDList = result["lineIDList"]
+    lineIDList = result["lineIDList"][0]
     for i in range(length):
         lineID = lineIDList[i]
         print(lineID, value[i])
