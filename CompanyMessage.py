@@ -51,7 +51,7 @@ def PushMessage(line_bot_api):
 
 def HealthRank(user_lineID, result):
     comp = []
-    comp.append(TextComponent(text = "No." + "       " + "name" + "                " + "value", color="#000000", flex=0))
+    comp.append(TextComponent(text = "No." + "       " + "name" + "                  " + "value", color="#000000", flex=0))
     i = 0
     value = result["sortedData"]
     length = len(value)
@@ -68,7 +68,11 @@ def HealthRank(user_lineID, result):
         if i == 0:
             color = '#ffa500'
         
-        comp.append(TextComponent(text = str(i+1) + ".      " + user_name + "            " + str(value[i]), size = 'xl', color=color, flex=0))
+        space = "            "
+        if value[i] < 0:
+            space = "         "
+
+        comp.append(TextComponent(text = str(i+1) + ".      " + user_name + space + str(value[i]), size = 'xl', color=color, flex=0))
         i+=1
     print(comp)
     
