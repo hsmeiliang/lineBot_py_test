@@ -57,9 +57,15 @@ postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
 
 
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
+import schedule
+import time
 
-CompanyMessage.PushMessage(line_bot_api)
-
+def job():
+    CompanyMessage.PushMessage(line_bot_api)
+schedule.every(2).minutes.do(job)
+while True:  
+    schedule.run_pending()
+    time.sleep(1)
 
 # 接收 LINE 的資訊
 @app.route("/callback", methods=['POST'])
