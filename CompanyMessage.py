@@ -15,7 +15,8 @@ def PushMessage(line_bot_api):
         "subject": "Health risk",
         "content": "Your health risk is high."
     }))
-
+    
+    user_name = 'xxx'
 
     message = BubbleContainer(
         direction = 'ltr',
