@@ -86,26 +86,7 @@ def HealthRank(user_lineID, result):
         direction = 'ltr',
         body = BoxComponent(
             layout = 'vertical',
-            contents = [
-                BoxComponent(
-                    layout = 'vertical',
-                    contents = [
-                        TextComponent(text = result["category"] + " Ranking", weight='bold', size='xl', color='#000000')
-                    ]
-                ),
-                BoxComponent(
-                    layout = 'horizontal',spacing='md',margin='xl',
-                    contents = [
-                        TextComponent(text = "No.  "),
-                        TextComponent(text = "name"),
-                        TextComponent(text = "value", align='end'),
-                    ]
-                ),
-                BoxComponent(
-                    layout = 'vertical',
-                    contents = comp
-                )
-            ]
+            contents = comp
         )
     )
     return bubble
