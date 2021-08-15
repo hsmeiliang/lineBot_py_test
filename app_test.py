@@ -117,9 +117,9 @@ def handle_text_message(event):
                 "lineIDList": [
                 [
                     'Ufbdbbd3db1cc8d560f45d5cd2519b290',
+                    'Ufbdbbd3db1cc8d560f45d5cd2519b291',
                     'Ufbdbbd3db1cc8d560f45d5cd2519b290',
-                    'Ufbdbbd3db1cc8d560f45d5cd2519b290',
-                    'Ufbdbbd3db1cc8d560f45d5cd2519b290'
+                    'Ufbdbbd3db1cc8d560f45d5cd2519b291'
                 ]
                 ],
                 "sortedData": [
