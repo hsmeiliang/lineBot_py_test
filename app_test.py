@@ -52,8 +52,8 @@ postbackRouter.add('/glutenfreeDiet', EatIntroduceController.glutenfreeDiet)
 postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
 postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
+line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage('push message'))
 
-print('done')
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 
 # 接收 LINE 的資訊
@@ -70,8 +70,6 @@ def callback():
         handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
-
-    line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage('push message'))
 
     return 'OK'
 #####
