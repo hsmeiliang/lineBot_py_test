@@ -79,7 +79,7 @@ def HealthRank(user_lineID, result):
     
     for i in range(len(result["category"])):
         if result["category"][i].isupper():
-            title = result["category"][1:i] + ' ' + result["category"][i+1:] + ' '+ 'Ranking'
+            title = result["category"][:i] + ' ' + result["category"][i:] + ' '+ 'Ranking'
 
     title = string.capwords(title)
 
