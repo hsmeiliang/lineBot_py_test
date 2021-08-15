@@ -80,7 +80,7 @@ def HealthRank(user_lineID, result):
             )
         )
         i+=1
-        
+    print(comp)
     
     bubble = BubbleContainer(
         direction = 'ltr',
