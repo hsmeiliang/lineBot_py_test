@@ -65,6 +65,13 @@ def timedTask():
     Timer(10, task).start()
 def task():
     print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+import schedule  
+import time  
+  
+def job():  
+    print("I'm working...")  
+  
+schedule.every(10).seconds.do(job) 
 '''
 CompanyMessage.PushMessage(line_bot_api)
 def job():
@@ -269,5 +276,7 @@ def isNum(data):
 
 if __name__ == "__main__":
     app.run()
-    timedTask()
+    while True:  
+        schedule.run_pending()  
+        time.sleep(1)  
     
