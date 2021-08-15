@@ -77,6 +77,8 @@ def callback():
 ####
 ###
 status = 0
+line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', 'push message')
+
 # 回傳 LINE 的資料
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
@@ -238,6 +240,8 @@ def echo(event):
                     preview_image_url="https://onepage.nownews.com/sites/default/files/2020-05/%E9%A6%96%E9%A0%81%E5%B0%81%E9%9D%A2-%E3%80%8C%E5%8F%AF%E6%86%90%E5%93%AA%E3%80%8D%E3%80%81%E3%80%8C%E9%BB%91%E4%BA%BA%E5%95%8F%E8%99%9F%E3%80%8D%E3%80%81%E3%80%8C%E6%88%91%E5%B0%B1%E7%88%9B%E3%80%8D%E9%80%99%E4%BA%9B%E6%A2%97%E5%9C%96%E7%9A%84%E7%94%B1%E4%BE%86%E4%BD%A0%E7%9F%A5%E9%81%93%E5%97%8E%EF%BC%9F.jpg"
                 )
             )
+
+@handler.add(MessageEvent, message=ImageMessage)
 
 @handler.add(PostbackEvent)
 def handle_postback(event):
