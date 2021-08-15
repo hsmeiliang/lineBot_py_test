@@ -77,7 +77,7 @@ def callback():
 ####
 ###
 status = 0
-line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', 'push message')
+#line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', 'push message')
 
 # 回傳 LINE 的資料
 @handler.add(MessageEvent, message=TextMessage)
