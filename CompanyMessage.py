@@ -18,7 +18,7 @@ def PushMessage(line_bot_api):
     
     user_name = 'xxx'
 
-    message = BubbleContainer(
+    bubble = BubbleContainer(
         direction = 'ltr',
         body = BoxComponent(
             layout = 'vertical',
@@ -46,5 +46,6 @@ def PushMessage(line_bot_api):
             ]
         )
     )
+    message = FlexSendMessage(alt_text = 'Company Health Platform Message', contents = bubble) 
     line_bot_api.push_message(warningmsg['lineID'], message)
 
