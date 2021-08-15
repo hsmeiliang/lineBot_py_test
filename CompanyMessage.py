@@ -60,7 +60,7 @@ def HealthRank(user_lineID, result):
     for i in range(length):
         lineID = lineIDList[i]
         print(lineID, value[i])
-        color = '#696969'
+        color = '#000000'
 
         user_name = "一二三"
 
@@ -79,7 +79,7 @@ def HealthRank(user_lineID, result):
     
     for i in range(len(result["category"])):
         if result["category"][i].isupper():
-            title = result["category"][:i] + ' ' + result["category"][i:] + ' '+ 'Ranking'
+            title = result["category"][:i] + ' ' + result["category"][i:] + ' '+ 'Rank'
 
     title = string.capwords(title)
 
