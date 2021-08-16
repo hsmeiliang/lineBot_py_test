@@ -289,8 +289,7 @@ if __name__ == "__main__":
 
 while True:
     schedule.run_pending()
-    if __name__ == "__main__":
-        app.run()
+    app.run()
     time.sleep(1)
 
 
