@@ -283,4 +283,5 @@ def isNum(data):
 if __name__ == "__main__":
     while True :
         app.run()
+        CompanyMessage.PushMessage(line_bot_api)
         sleep(10)
