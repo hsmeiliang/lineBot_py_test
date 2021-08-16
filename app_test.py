@@ -58,10 +58,9 @@ postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
 import schedule
 import time
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
-def job1():
-    CompanyMessage.PushMessage(line_bot_api)
-    print("job1")
-schedule.every(5).seconds.do(job1)
+
+CompanyMessage.PushMessage(line_bot_api)
+
 
 # 接收 LINE 的資訊
 @app.route("/callback", methods=['POST'])
@@ -281,9 +280,12 @@ def isNum(data):
     if len(data) > 1 and data[0] == '0': return False
     return data.replace('.', '', 1).isnumeric()
 
+def job():
+    while True:
+        CompanyMessage.PushMessage(line_bot_api)
+        time.sleep(10)
 
 if __name__ == "__main__":
-    while True :
-        app.run()
-        schedule.run_pending()
-        time.sleep(10)
+    app.run()
+    job()
+
