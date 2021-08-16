@@ -282,7 +282,7 @@ def isNum(data):
 
 def job():
     CompanyMessage.PushMessage(line_bot_api)
-schedule.every(5).seconds.do(job)
+schedule.every(60).seconds.do(job)
 
 if __name__ == "__main__":
     app.run()
@@ -291,6 +291,6 @@ while True:
     schedule.run_pending()
     if __name__ == "__main__":
         app.run()
-    time.sleep(1)
+    time.sleep(100)
 
 
