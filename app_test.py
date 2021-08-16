@@ -55,11 +55,11 @@ postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
 postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
 
-
+import schedule
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
-
-CompanyMessage.PushMessage(line_bot_api)
-
+def job1():
+    CompanyMessage.PushMessage(line_bot_api)
+schedule.every(5).seconds.do(job1)
 
 # 接收 LINE 的資訊
 @app.route("/callback", methods=['POST'])
@@ -283,5 +283,5 @@ def isNum(data):
 if __name__ == "__main__":
     while True :
         app.run()
-        CompanyMessage.PushMessage(line_bot_api)
+        schedule.run_pending()
         sleep(10)
