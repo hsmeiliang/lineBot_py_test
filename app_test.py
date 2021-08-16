@@ -56,6 +56,7 @@ postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
 
 import schedule
+import time
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 def job1():
     CompanyMessage.PushMessage(line_bot_api)
@@ -284,4 +285,4 @@ if __name__ == "__main__":
     while True :
         app.run()
         schedule.run_pending()
-        sleep(10)
+        time.sleep(10)
