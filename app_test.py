@@ -24,7 +24,7 @@ from BeaconMessage import BeaconMessage
 beaconMessage = BeaconMessage()
 from GetHealthEdu import GetYoutubeLink, GetNewsLink, HealthMessage
 import CompanyMessage
-
+import requests
 
 #
 # LINE 聊天機器人的基本資料
