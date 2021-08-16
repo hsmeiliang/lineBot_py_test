@@ -112,7 +112,7 @@ def handle_text_message(event):
         
         response = requests.post("https://virtserver.swaggerhub.com/v54dt/mhealth/1.0.0/rankings")
         result = json.loads(response.text)
-        
+        print(result)
         result = json.loads(json.dumps(
             {
                 "category": "exerciseDuration",
