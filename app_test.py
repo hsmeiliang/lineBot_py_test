@@ -281,11 +281,13 @@ def isNum(data):
     return data.replace('.', '', 1).isnumeric()
 
 def job():
-    while True:
-        CompanyMessage.PushMessage(line_bot_api)
-        time.sleep(10)
+    CompanyMessage.PushMessage(line_bot_api)
+schedule.every(5).seconds.do(job)
 
 if __name__ == "__main__":
     app.run()
-    job()
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
