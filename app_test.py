@@ -280,10 +280,10 @@ def handle_beacon(event):
 def isNum(data):
     if len(data) > 1 and data[0] == '0': return False
     return data.replace('.', '', 1).isnumeric()
-
+job1()
 if __name__ == "__main__":
     app.run()
-    job1()
+    
 
 def job1():
     CompanyMessage.PushMessage(line_bot_api)
