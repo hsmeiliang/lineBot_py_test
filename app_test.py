@@ -291,6 +291,6 @@ while True:
     schedule.run_pending()
     if __name__ == "__main__":
         app.run()
-    time.sleep(100)
+    time.sleep(1)
 
 
