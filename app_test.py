@@ -283,6 +283,7 @@ def isNum(data):
 
 if __name__ == "__main__":
     app.run()
+    job1()
 
 def job1():
     CompanyMessage.PushMessage(line_bot_api)
