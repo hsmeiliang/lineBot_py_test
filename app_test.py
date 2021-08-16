@@ -286,8 +286,9 @@ schedule.every(5).seconds.do(job)
 
 if __name__ == "__main__":
     app.run()
-
+'''
 while True:
     schedule.run_pending()
     time.sleep(1)
+'''
 
