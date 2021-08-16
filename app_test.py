@@ -286,18 +286,7 @@ if __name__ == "__main__":
 
 def job1():
     CompanyMessage.PushMessage(line_bot_api)
-def job1_task():
-    threading.Thread(target=job1).start()
-schedule.every(30).seconds.do(job1_task)
-def job2():
-    if __name__ == "__main__":
-        app.run()
-def job2_task():
-    threading.Thread(target=job2).start()
-schedule.every(600).seconds.do(job2_task)
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+
 
 
 
