@@ -59,7 +59,7 @@ import schedule
 import time
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 
-CompanyMessage.PushMessage(line_bot_api)
+# CompanyMessage.PushMessage(line_bot_api)
 
 
 # 接收 LINE 的資訊
@@ -286,9 +286,11 @@ schedule.every(5).seconds.do(job)
 
 if __name__ == "__main__":
     app.run()
-'''
+
 while True:
     schedule.run_pending()
+    if __name__ == "__main__":
+        app.run()
     time.sleep(1)
-'''
+
 
