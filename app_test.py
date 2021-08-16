@@ -58,7 +58,7 @@ postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
 
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 
-# CompanyMessage.PushMessage(line_bot_api)
+CompanyMessage.PushMessage(line_bot_api)
 
 
 # 接收 LINE 的資訊
@@ -281,4 +281,6 @@ def isNum(data):
 
 
 if __name__ == "__main__":
-    app.run()
+    while True :
+        app.run()
+        sleep(10)
