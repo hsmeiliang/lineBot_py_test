@@ -280,12 +280,18 @@ def isNum(data):
     if len(data) > 1 and data[0] == '0': return False
     return data.replace('.', '', 1).isnumeric()
 
-def job():
+def job1():
     CompanyMessage.PushMessage(line_bot_api)
-schedule.every(60).seconds.do(job)
-
-if __name__ == "__main__":
-    app.run()
+schedule.every(30).seconds.do(job1)
+def job1_task():
+    threading.Thread(target=job1).start()
+def job2()
+    if __name__ == "__main__":
+        app.run()
+schedule.every(600).seconds.do(job2)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
 
