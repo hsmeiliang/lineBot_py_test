@@ -107,7 +107,7 @@ def handle_text_message(event):
         message = healthMessage.showNews(links, titles)
         line_bot_api.reply_message(event.reply_token, message)
     elif text == 'id':
-        print(json.loads(event))
+        print(json.loads(event.message))
         line_bot_api.reply_message(event.reply_token, TextSendMessage(event.source.user_id))
     elif text == '排行榜':
         
