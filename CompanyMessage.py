@@ -7,10 +7,10 @@ import string
 # line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage(text = 'push message'))
 # https://cdn4.iconfinder.com/data/icons/coronavirus-color/64/doctor-advise-warning-suggestion-avatar-1024.png
 def PushMessage(line_bot_api):
-    '''
+
     response = requests.post('https://virtserver.swaggerhub.com/v54dt/mhealth/1.0.0/notification')
     warningmsg = json.loads(response.text)
-    '''
+    print(warningmsg)
     warningmsg = json.loads(json.dumps({
         "lineID": "Ufbdbbd3db1cc8d560f45d5cd2519b290",
         "subject": "Health risk",
