@@ -60,6 +60,7 @@ import time
 # 命名要小心 /keto, /ketoA   =>  /ketoA 讀不到
 def job1():
     CompanyMessage.PushMessage(line_bot_api)
+    print("job1")
 schedule.every(5).seconds.do(job1)
 
 # 接收 LINE 的資訊
