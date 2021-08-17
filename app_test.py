@@ -295,7 +295,7 @@ def set_interval(func, sec):
 
 def job1():
     CompanyMessage.PushMessage(line_bot_api)
-set_interval(job1,60)
+# set_interval(job1,60)
 if __name__ == "__main__":
     app.run()
 
