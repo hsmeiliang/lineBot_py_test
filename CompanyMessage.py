@@ -18,14 +18,17 @@ def PushMessage(line_bot_api):
     }))
     
     user_name = 'xxx'
-
-    def mesg(warningmsg):
-        if warningmsg == "Your health risk is high.":
-            return TextComponent(text = "You should take good care of"), TextComponent(text = "yourself and pay more attention to"), TextComponent(text = "your health.")
-        elif warningmsg == "Your health risk is medium.":
-            return TextComponent(text = "You should take good care of"), TextComponent(text = "yourself.")
-        else:
-            return TextComponent(text = "Keep going !")
+    msg = [TextComponent(text = "Dear " + user_name + " :"),
+        TextComponent(text = warningmsg['content'], weight='bold', color='#cd5c5c')]
+    if warningmsg['content'] == "Your health risk is high.":
+        msg.append(TextComponent(text = "You should take good care of"))
+        msg.append(TextComponent(text = "yourself and pay more attention to"))
+        msg.append(TextComponent(text = "your health."))
+    elif warningmsg['content'] == "Your health risk is medium.":
+        msg.append(TextComponent(text = "You should take good care of"))
+        msg.append(TextComponent(text = "yourself."))
+    else:
+        msg.append(TextComponent(text = "Keep going !"))
     bubble = BubbleContainer(
         direction = 'ltr',
         body = BoxComponent(
@@ -45,11 +48,7 @@ def PushMessage(line_bot_api):
                 ),
                 BoxComponent(
                     layout = 'vertical',spacing='md',margin='xl',
-                    contents = [
-                        TextComponent(text = "Dear " + user_name + " :"),
-                        TextComponent(text = warningmsg['content'], weight='bold', color='#cd5c5c'),
-                        mesg(warningmsg['content'])
-                    ]
+                    contents = msg
                 )
             ]
         )
