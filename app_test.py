@@ -281,9 +281,21 @@ def handle_beacon(event):
 def isNum(data):
     if len(data) > 1 and data[0] == '0': return False
     return data.replace('.', '', 1).isnumeric()
+
+import threading
+import time
+
+def set_interval(func, sec):
+    def func_wrapper():
+        set_interval(func, sec)
+        func()
+    t = threading.Timer(sec, func_wrapper)
+    t.start()
+    return t
+
 def job1():
     CompanyMessage.PushMessage(line_bot_api)
-job1()
+set_interval(job1,60)
 if __name__ == "__main__":
     app.run()
 
