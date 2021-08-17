@@ -19,6 +19,13 @@ def PushMessage(line_bot_api):
     
     user_name = 'xxx'
 
+    def mesg(warningmsg):
+        if warningmsg == "Your health risk is high.":
+            return TextComponent(text = "You should take good care of"), TextComponent(text = "yourself and pay more attention to"), TextComponent(text = "your health.")
+        elif warningmsg == "Your health risk is medium.":
+            return TextComponent(text = "You should take good care of"), TextComponent(text = "yourself.")
+        else:
+            return TextComponent(text = "Keep going !")
     bubble = BubbleContainer(
         direction = 'ltr',
         body = BoxComponent(
@@ -41,7 +48,7 @@ def PushMessage(line_bot_api):
                     contents = [
                         TextComponent(text = "Dear " + user_name + " :"),
                         TextComponent(text = warningmsg['content'], weight='bold', color='#cd5c5c'),
-                        TextComponent(text = "Please checkout your body info.")
+                        mesg(warningmsg['content'])
                     ]
                 )
             ]
