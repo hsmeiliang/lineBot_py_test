@@ -14,7 +14,7 @@ def PushMessage(line_bot_api):
     warningmsg = json.loads(json.dumps({
         "lineID": "Ufbdbbd3db1cc8d560f45d5cd2519b290",
         "subject": "Health risk",
-        "content": "Your health risk is high."
+        "content": "Your health risk is low."
     }))
     
     user_name = 'xxx'
