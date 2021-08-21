@@ -25,7 +25,7 @@ beaconMessage = BeaconMessage()
 from GetHealthEdu import GetYoutubeLink, GetNewsLink, HealthMessage
 import CompanyMessage
 import requests
-
+import utility
 #
 # LINE 聊天機器人的基本資料
 # LINE 的 channel_access_token, channel_secret 換成在 Line Developer 裡的資料
@@ -161,9 +161,13 @@ def handle_text_message(event):
         message = [TextSendMessage(text= '附近餐點推薦'),
             FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.nearbyFood(recommendList))]
         line_bot_api.reply_message(event.reply_token, message)
-    elif text == 'enter hwid_list[0]':
-        message = TextSendMessage(text = 'connect beacon 0 reply recommand food')
-        line_bot_api.reply_message(event.reply_token, message)
+    elif text == '飲食順序':
+        line_bot_api.reply_message(event.reply_token, [
+            TextSendMessage(text='根據相關研究表明，高GI的食物愈後吃愈能控制血糖的上升\n\n'+
+            '理想的飲食順序為:\n1. 蔬菜類\n2. 蛋豆魚肉類\n3. 脂肪類\n4. 五穀根莖類\n5. 水果\n6. 飲料和甜點'),
+            TextSendMessage(text='請輸入想吃的食物名稱\nex:牛排 沙拉 奶茶 巧克力蛋糕')
+        ])
+        status = 7
     elif text == '路線':
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入預定運動路線長度(km):\n範例:3'),
                                                     TextSendMessage(text = '若取消請輸入N')])
@@ -172,6 +176,19 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入最低熱量需求(kcal):\n範例:1000'),
                                                     TextSendMessage(text = '若取消請輸入N')])
         status = 18
+    elif status == 7:
+            foods = text.split(' ')
+            conflicts = requests.get("https://mhealth-service.feveral.me/api/food/conflict", params={"foods":foods}, verify=False).json()['conflicts']
+            print(conflicts)
+            answer = utility.order(text)
+            messages = [TextSendMessage(text='建議您依照以下順序食用')]
+            lst = []
+            for a in answer:
+                lst.append(a[0])
+            messages.append(TextSendMessage(text=' '.join(lst)))
+            for c in conflicts:
+                messages.append(TextSendMessage(text=c['food1'] + '和' + c['food2'] + '有食物衝突\n\n' + c['remarks']))
+            line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
         if not isNum(text):
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text='格式錯誤，請重新輸入'))
@@ -295,8 +312,8 @@ def set_interval(func, sec):
 
 def job1():
     CompanyMessage.PushMessage(line_bot_api)
-CompanyMessage.PushMessage(line_bot_api)
-set_interval(job1,300)
+# CompanyMessage.PushMessage(line_bot_api)
+# set_interval(job1,40*60)
 if __name__ == "__main__":
     app.run()
 
