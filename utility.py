@@ -149,19 +149,10 @@ def foodConflict(foods):
         flag1 = 0
         flag2 = 0
         for food in foods:
-            if row['food1'] == food:
+            if food.find(row['food1']):
                 flag1 +=1
-                break
-            if row['food2'] == food:
+            if food.find(row['food2']):
                 flag2 +=1
-                break
-            for i in range(len(food)):
-                if row['food1'] == food[i]:
-                    flag1 +=1
-                    break
-                elif row['food2'] == food[i]:
-                    flag2 +=1
-                    break
         if flag1 == 1 and flag2 == 1:
             conflictMsg.append(row)
         elif flag1 == 1 or flag2 == 1:
