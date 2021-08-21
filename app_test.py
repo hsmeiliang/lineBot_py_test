@@ -188,8 +188,7 @@ def handle_text_message(event):
             for a in answer:
                 lst.append(a[0])
             messages.append(TextSendMessage(text=' '.join(lst)))
-            for c in conflicts:
-                messages.append(TextSendMessage(text=c['food1'] + '和' + c['food2'] + '有食物衝突\n\n' + c['warning']))
+            messages.append(TextSendMessage(text=utility.foodsMessage(conflict, suggestion)))
             line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
         if not isNum(text):

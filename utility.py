@@ -1,4 +1,4 @@
-from linebot.models import TextSendMessage
+from linebot.models import *
 import operator
 import requests
 import json
@@ -167,4 +167,14 @@ def foodConflict(foods):
         elif flag1 == 1 or flag2 == 1:
             suggestion.append(row)
     return conflictMsg, suggestion
+
+def foodsMessage(conflictMsg, suggestion):
+    msg = ''
+    for item in conflictMsg:
+        msg = msg + item['food1'] + '和' + item['food2'] + '有食物衝突\n' + item['warning']
+    return msg
+
+
+
+
 
