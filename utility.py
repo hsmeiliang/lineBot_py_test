@@ -173,6 +173,8 @@ def foodDictionary(food):
     if Dictionary.__contains__(food):
         print(Dictionary[food])
         return Dictionary[food]
+    else:
+        return food
 
 def foodsMessage(conflictMsg):
     msg = ''
