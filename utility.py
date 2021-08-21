@@ -168,10 +168,11 @@ def foodConflict(foods):
             suggestion.append(row)
     return conflictMsg, suggestion
 
-def foodsMessage(conflictMsg, suggestion):
+def foodsMessage(conflictMsg):
     msg = ''
+    num = 1
     for item in conflictMsg:
-        msg = msg + item['food1'] + '和' + item['food2'] + '有食物衝突\n' + item['warning']
+        msg = msg + num +'. ' + '「' + item['food1'] + '」' + '和' + '「' + item['food2'] + '」' + '有食物衝突\n' + item['warning'] + '\n'
     return msg
 
 

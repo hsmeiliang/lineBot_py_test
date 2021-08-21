@@ -188,8 +188,9 @@ def handle_text_message(event):
             for a in answer:
                 lst.append(a[0])
             messages.append(TextSendMessage(text=' '.join(lst)))
-            print(utility.foodsMessage(conflicts, suggestion))
-            messages.append(TextSendMessage(text=utility.foodsMessage(conflicts, suggestion)))
+            print(utility.foodsMessage(conflicts))
+            messages.append(TextSendMessage(text=utility.foodsMessage(conflicts)))
+            messages.append(TextSendMessage(text='其他注意飲食建議:\n'+ utility.foodsMessage(suggestion)))
             line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
         if not isNum(text):
