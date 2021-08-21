@@ -189,9 +189,9 @@ def handle_text_message(event):
                 lst.append(a[0])
             messages.append(TextSendMessage(text=' '.join(lst)))
             print(utility.foodsMessage(conflicts))
-            if conflicts[0]:
+            if len(conflicts) != 0:
                 messages.append(TextSendMessage(text='餐點中含有食物相剋:'+ utility.foodsMessage(conflicts)))
-            if suggestion[0]:
+            if len(suggestion) != 0:
                 messages.append(TextSendMessage(text='其他注意飲食建議:'+ utility.foodsMessage(suggestion)))
             line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
