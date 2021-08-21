@@ -151,19 +151,18 @@ def foodConflict(foods):
         for food in foods:
             if row['food1'] == food:
                 flag1 +=1
-                break
-            if row['food2'] == food:
+            elif row['food2'] == food:
                 flag2 +=1
-                break
-            for i in range(len(food)):
-                temp1 = food[i:i+len(row['food1'])]
-                temp2 = food[i:i+len(row['food2'])] 
-                if row['food1'] == temp1:
-                    flag1 +=1
-                    break
-                elif row['food2'] == temp2:
-                    flag2 +=1
-                    break
+            else:
+                for i in range(len(food)):
+                    temp1 = food[i:i+len(row['food1'])]
+                    temp2 = food[i:i+len(row['food2'])] 
+                    if row['food1'] == temp1:
+                        flag1 +=1
+                        break
+                    elif row['food2'] == temp2:
+                        flag2 +=1
+                        break
         if flag1 == 1 and flag2 == 1:
             conflictMsg.append(row)
         elif flag1 == 1 or flag2 == 1:
