@@ -134,3 +134,5 @@ def order(data):
         answer[f] = score
     return sorted(answer.items(), key=operator.itemgetter(1), reverse=True)
 
+def foodConflict(foods):
+    pass

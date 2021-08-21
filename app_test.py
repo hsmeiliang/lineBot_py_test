@@ -179,6 +179,7 @@ def handle_text_message(event):
     elif status == 7:
             foods = text.split(' ')
             conflicts = requests.get("https://mhealth-service.feveral.me/api/food/conflict", params={"foods":foods}, verify=False).json()['conflicts']
+            print(foods)
             print(conflicts)
             answer = utility.order(text)
             messages = [TextSendMessage(text='建議您依照以下順序食用')]
