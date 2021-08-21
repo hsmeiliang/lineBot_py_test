@@ -172,7 +172,7 @@ def foodsMessage(conflictMsg):
     msg = ''
     num = 1
     for item in conflictMsg:
-        msg = msg + str(num) +'. ' + '「' + item['food1'] + '」' + '和' + '「' + item['food2'] + '」' + '有食物衝突\n' + item['warning'] + '\n'
+        msg = msg + str(num) +'. ' + '「' + item['food1'] + '」' + '和' + '「' + item['food2'] + '」' + '有食物衝突\n\t' + item['warning'] + '\n'
         num+=1
     return msg
 
