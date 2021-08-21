@@ -171,6 +171,7 @@ def foodConflict(foods):
 def foodDictionary(food):
     Dictionary = {'豬':'豬肉', '奶':'牛奶', '豆':'豆類', '蛋':'雞蛋', '蟹':'螃蟹', '梨':'梨子', '橘':'柑橘類'}
     if Dictionary.__contains__(food):
+        print(Dictionary[food])
         return Dictionary[food]
 
 def foodsMessage(conflictMsg):
