@@ -168,11 +168,16 @@ def foodConflict(foods):
             suggestion.append(row)
     return conflictMsg, suggestion
 
+def foodDictionary(food):
+    Dictionary = {'豬':'豬肉', '奶':'牛奶', '豆':'豆類', '蛋':'雞蛋', '蟹':'螃蟹', '梨':'梨子'}
+    if Dictionary[food]:
+        return Dictionary[food]
+
 def foodsMessage(conflictMsg):
     msg = ''
     num = 1
     for item in conflictMsg:
-        msg = msg + str(num) +'. ' + '「' + item['food1'] + '」' + '和' + '「' + item['food2'] + '」' + '有食物衝突\n\t' + item['warning'] + '\n'
+        msg = msg+ '\n' + str(num) +'. ' + '「' + foodDictionary(item['food1']) + '」' + '和' + '「' + foodDictionary(item['food2']) + '」' + '衝突\n\t' + item['warning']
         num+=1
     return msg
 
