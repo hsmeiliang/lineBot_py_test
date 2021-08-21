@@ -178,8 +178,9 @@ def handle_text_message(event):
         status = 18
     elif status == 7:
             foods = text.split(' ')
-            conflicts = requests.get("https://mhealth-service.feveral.me/api/food/conflict", params={"foods":foods}, verify=False).json()['conflicts']
+            # conflicts = requests.get("https://mhealth-service.feveral.me/api/food/conflict", params={"foods":foods}, verify=False).json()['conflicts']
             print(foods)
+            conflicts, suggestion = utility.foodConflict(foods)
             print(conflicts)
             answer = utility.order(text)
             messages = [TextSendMessage(text='建議您依照以下順序食用')]
@@ -188,7 +189,7 @@ def handle_text_message(event):
                 lst.append(a[0])
             messages.append(TextSendMessage(text=' '.join(lst)))
             for c in conflicts:
-                messages.append(TextSendMessage(text=c['food1'] + '和' + c['food2'] + '有食物衝突\n\n' + c['remarks']))
+                messages.append(TextSendMessage(text=c['food1'] + '和' + c['food2'] + '有食物衝突\n\n' + c['warning']))
             line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
         if not isNum(text):
