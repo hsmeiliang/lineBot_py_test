@@ -3,7 +3,8 @@ import operator
 import requests
 import json
 from datetime import datetime
-
+import csv
+import json
 
 
 # Useless function
@@ -135,8 +136,6 @@ def order(data):
     return sorted(answer.items(), key=operator.itemgetter(1), reverse=True)
 
 def foodConflict(foods):
-    import csv
-    import json
     column = []
     with open('FoodConflictList.csv', 'r', encoding = "utf-8") as csvfile:
         reader = csv.DictReader(csvfile)
