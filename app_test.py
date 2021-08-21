@@ -188,6 +188,7 @@ def handle_text_message(event):
             for a in answer:
                 lst.append(a[0])
             messages.append(TextSendMessage(text=' '.join(lst)))
+            print(utility.foodsMessage(conflict, suggestion))
             messages.append(TextSendMessage(text=utility.foodsMessage(conflict, suggestion)))
             line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
