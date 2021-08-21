@@ -156,8 +156,8 @@ def foodConflict(foods):
                 flag2 +=1
                 break
             for i in range(len(food)):
-                temp1 = food[i:i+len(food1)]
-                temp2 = food[i:i+len(food2)] 
+                temp1 = food[i:i+len(row['food1'])]
+                temp2 = food[i:i+len(row['food2'])] 
                 if row['food1'] == temp1:
                     flag1 +=1
                     break
