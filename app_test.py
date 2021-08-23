@@ -102,7 +102,7 @@ def handle_text_message(event):
         message=healthMessage.showList(table)
         line_bot_api.reply_message(event.reply_token, message)
         ####
-    elif text == 'bread':
+    elif text == 'toast':
         translator= Translator(to_lang="chinese")
         translation = translator.translate(text)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = translation))
