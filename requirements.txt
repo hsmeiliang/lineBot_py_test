@@ -2,5 +2,5 @@ Flask==1.1.1
 gunicorn==19.9.0
 line-bot-sdk==1.14.0
 schedule
-googletrans
+googletrans==4.0.0-rc1
 translate
