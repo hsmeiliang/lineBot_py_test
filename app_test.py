@@ -104,7 +104,7 @@ def handle_text_message(event):
         ####
     elif text == 'bread':
         translator= Translator(to_lang="chinese")
-        translation = translator.translate(text))
+        translation = translator.translate(text)
         line_bot_api(event.reply_token, TextSendMessage(text = translation))
     elif text == 'news':
         getlinks = GetNewsLink()
