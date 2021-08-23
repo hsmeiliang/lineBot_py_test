@@ -106,7 +106,7 @@ def handle_text_message(event):
         # translator= Translator(to_lang="chinese")
         translator = googletrans.Translator()
         translation = translator.translate(text, dest = 'zh-tw')
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = translation))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = translation.text))
     elif text == 'news':
         getlinks = GetNewsLink()
         links, titles = getlinks.getLinkLists()
