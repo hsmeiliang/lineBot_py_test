@@ -3,3 +3,4 @@ gunicorn==19.9.0
 line-bot-sdk==1.14.0
 schedule
 googletrans
+translate

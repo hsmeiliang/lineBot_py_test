@@ -27,6 +27,7 @@ import CompanyMessage
 import requests
 import utility
 import googletrans
+from translate import Translator
 #
 # LINE 聊天機器人的基本資料
 # LINE 的 channel_access_token, channel_secret 換成在 Line Developer 裡的資料
@@ -102,9 +103,9 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, message)
         ####
     elif text == 'bread':
-        translator = googletrans.Translator()
-        results = translator.translate(text, dest = 'zh-tw')
-        line_bot_api(event.reply_token, TextSendMessage(text = results.text))
+        translator= Translator(to_lang="chinese")
+        translation = translator.translate(text))
+        line_bot_api(event.reply_token, TextSendMessage(text = translation))
     elif text == 'news':
         getlinks = GetNewsLink()
         links, titles = getlinks.getLinkLists()
