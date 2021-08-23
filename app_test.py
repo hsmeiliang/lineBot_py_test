@@ -103,8 +103,8 @@ def handle_text_message(event):
         ####
     elif text == 'bread':
         translator = googletrans.Translator()
-        transTW = translator.translate(text, dest = 'zh-tw', src = 'en')
-        line_bot_api(event.reply_token, TextSendMessage(text = transTW))
+        results = translator.translate(text, dest = 'zh-tw')
+        line_bot_api(event.reply_token, TextSendMessage(text = results.text))
     elif text == 'news':
         getlinks = GetNewsLink()
         links, titles = getlinks.getLinkLists()
