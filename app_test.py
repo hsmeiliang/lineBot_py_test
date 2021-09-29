@@ -250,6 +250,7 @@ def handle_text_message(event):
                 'picture' : 'https://i.imgur.com/376iFbj.jpg'
                 }
             ]))
+            print(recommendList)
             message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
             line_bot_api.reply_message(event.reply_token, message)
             status = 0
