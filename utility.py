@@ -22,7 +22,7 @@ def TextAnalysis(text):
     belly = ['湯', '茶泡飯', '蕎麥', '醋', '生魚片', '生菜', '生雞蛋', '竹筍', '牛蒡', '南瓜', '芥菜', '蒟蒻', '海帶', '紫菜',
              '海苔', '藻', '柑', '橘', '椪', '橙', '草莓', '鳳梨', '檸', '檬', '番茄醬', '茄汁']
     #data = text.split(' ')
-    for food in data:
+    for food in text:
         print(food)
         if disease[0] == 1: # diabete
             for f in diabete:
