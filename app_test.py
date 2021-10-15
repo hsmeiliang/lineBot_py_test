@@ -84,12 +84,21 @@ def callback():
 ####
 ###
 status = 0
-
+disease = [1,0,1,0]
+'''
+diabete糖尿病
+heart
+highpressure
+belly肥胖
+'''
 # 回傳 LINE 的資料
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     text = event.message.text
     global status
+
+    global disease
+
     if text == 'advice':
         buttons_template = ButtonsTemplate(title='飲食建議',text='Eating suggestion',actions=[PostbackAction(label='生酮飲食',data='/ketogenicDiet'), PostbackAction(label='健身',data='/muscleDiet'),
                     PostbackAction(label='得舒飲食',data='/dashDiet'), PostbackAction(label='無麩質飲食',data='/glutenfreeDiet')])
@@ -187,7 +196,7 @@ def handle_text_message(event):
             foods = text.split(' ')
             # conflicts = requests.get("https://mhealth-service.feveral.me/api/food/conflict", params={"foods":foods}, verify=False).json()['conflicts']
             print(foods)
-            conflicts, suggestion = utility.foodConflict(foods)
+            conflicts = utility.foodConflict(foods)
             print(conflicts)
             answer = utility.order(text)
             messages = [TextSendMessage(text='建議您依照以下順序食用')]
@@ -198,8 +207,7 @@ def handle_text_message(event):
             print(utility.foodsMessage(conflicts))
             if len(conflicts) != 0:
                 messages.append(TextSendMessage(text='餐點中含有食物相剋:'+ utility.foodsMessage(conflicts)))
-            if len(suggestion) != 0:
-                messages.append(TextSendMessage(text='其他注意飲食建議:'+ utility.foodsMessage(suggestion)))
+            
             line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
         if not isNum(text):

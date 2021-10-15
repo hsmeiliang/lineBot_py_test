@@ -144,7 +144,7 @@ def foodConflict(foods):
     # print(column)
     table = json.loads(json.dumps(column))
     conflictMsg = []
-    suggestion = []
+
     for row in table:
         flag1 = 0
         flag2 = 0
@@ -165,9 +165,8 @@ def foodConflict(foods):
                         break
         if flag1 == 1 and flag2 == 1:
             conflictMsg.append(row)
-        elif flag1 == 1 or flag2 == 1:
-            suggestion.append(row)
-    return conflictMsg, suggestion
+
+    return conflictMsg
 
 def foodDictionary(food):
     Dictionary = {'豬':'豬肉', '奶':'牛奶', '豆':'豆類', '蛋':'雞蛋', '蟹':'螃蟹', '梨':'梨子', '橘':'柑橘類'}
