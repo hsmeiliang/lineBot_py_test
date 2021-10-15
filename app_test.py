@@ -198,6 +198,7 @@ def handle_text_message(event):
             print(foods)
             conflicts = utility.foodConflict(foods)
             print(conflicts)
+            print(utility.TextAnalysis(foods))
             answer = utility.order(text)
             messages = [TextSendMessage(text='建議您依照以下順序食用')]
             lst = []
