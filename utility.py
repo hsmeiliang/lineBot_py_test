@@ -44,10 +44,8 @@ def TextAnalysis(text):
                 if food.find(f) >= 0:
                     abandon.append(f)
                     break
-
-    abandon_set = set(abandon)
-    if len(abandon_set) > 0: advise = advise + '\n'.join(list(abandon_set))
-    return advise
+    
+    return abandon
 
 def order(data):
     food = data.split(' ')
