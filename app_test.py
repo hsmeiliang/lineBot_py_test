@@ -84,7 +84,7 @@ def callback():
 ####
 ###
 status = 0
-disease = [1,0,1,0]
+disease = [1,0,0,0]
 '''
 diabete糖尿病
 heart
@@ -198,10 +198,7 @@ def handle_text_message(event):
             print(foods)
             conflicts = utility.foodConflict(foods)
             print(conflicts)
-            print(utility.diseaseFood(foods, 0))
-
-
-
+            
             answer = utility.order(text)
             messages = [TextSendMessage(text='建議您依照以下順序食用')]
             lst = []
@@ -213,6 +210,12 @@ def handle_text_message(event):
             if len(conflicts) != 0:
                 messages.append(TextSendMessage(text='餐點中含有食物相剋:'+ utility.foodsMessage(conflicts)))
             
+            for i in range(disease):
+                if disease[i] == 1:
+                    diseaseMsg = utility.diseaseFood(foods, i)
+                    message.append(TextSendMessage(text = utility.suggestMessage(diseaseMsg, i)))
+
+
             line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
         if not isNum(text):
