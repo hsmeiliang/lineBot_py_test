@@ -210,12 +210,14 @@ def handle_text_message(event):
             if len(conflicts) != 0:
                 messages.append(TextSendMessage(text='餐點中含有食物相剋:'+ utility.foodsMessage(conflicts)))
             
+            suggestions = ''
             for i in range(len(disease)):
                 if disease[i] == 1:
                     diseaseMsg = utility.diseaseFood(foods, i)
                     if len(diseaseMsg) != 0:
-                        messages.append(TextSendMessage(text = utility.suggestMessage(diseaseMsg, i)))
+                        suggestions = suggestions + utility.suggestMessage(diseaseMsg, i) + '\n'
 
+            messages.append(TextSendMessage(text = suggestions))
 
             line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
