@@ -198,13 +198,17 @@ def handle_text_message(event):
             print(foods)
             conflicts = utility.foodConflict(foods)
             print(conflicts)
-            print(utility.TextAnalysis(foods))
+            print(utility.diseaseFood(foods, 0))
+
+
+
             answer = utility.order(text)
             messages = [TextSendMessage(text='建議您依照以下順序食用')]
             lst = []
             for a in answer:
                 lst.append(a[0])
             messages.append(TextSendMessage(text=' '.join(lst)))
+
             print(utility.foodsMessage(conflicts))
             if len(conflicts) != 0:
                 messages.append(TextSendMessage(text='餐點中含有食物相剋:'+ utility.foodsMessage(conflicts)))

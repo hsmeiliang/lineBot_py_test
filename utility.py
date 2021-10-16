@@ -133,6 +133,29 @@ def order(data):
         answer[f] = score
     return sorted(answer.items(), key=operator.itemgetter(1), reverse=True)
 
+def diseaseFood(foods, disease):
+    column = []
+    with open('DiseaseFood.csv', 'r', encoding = "utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            column.append(row)
+    # print(column)
+    table = json.loads(json.dumps(column))
+    diseaseMsg = []
+
+    for row in table:
+        if row['disease'] == disease:
+            for food in foods:
+                if row['food'] == food:
+                    diseaseMsg.append(food + ' ')
+                else:
+                    for i in range(len(food)):
+                        temp = food[i:i+len(row['food'])]
+                        if row['food'] == temp:
+                            diseaseMsg.append(food + ' ')
+                            break
+    return diseaseMsg
+
 def foodConflict(foods):
     column = []
     with open('FoodConflictList.csv', 'r', encoding = "utf-8") as csvfile:
