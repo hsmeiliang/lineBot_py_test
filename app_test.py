@@ -204,7 +204,7 @@ def handle_text_message(event):
             lst = []
             for a in answer:
                 lst.append(a[0])
-            messages.append(TextSendMessage(text=' '.join(lst)))
+            messages.append(TextSendMessage(text='建議您依照以下順序食用\n' + ' '.join(lst)))
 
             print(utility.foodsMessage(conflicts))
             if len(conflicts) != 0:
