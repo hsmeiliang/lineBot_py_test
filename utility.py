@@ -143,9 +143,9 @@ def diseaseFood(foods, disease):
     table = json.loads(json.dumps(column))
     diseaseMsg = []
 
-    for row in table:
-        if int(row['disease']) == disease:
-            for food in foods:
+    for food in foods:
+        for row in table:
+            if int(row['disease']) == disease:
                 if row['food'] == food:
                     diseaseMsg.append(food + ' ')
                 else:
