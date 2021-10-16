@@ -213,7 +213,8 @@ def handle_text_message(event):
             for i in range(len(disease)):
                 if disease[i] == 1:
                     diseaseMsg = utility.diseaseFood(foods, i)
-                    message.append(TextSendMessage(text = utility.suggestMessage(diseaseMsg, i)))
+                    if len(diseaseMsg) != 0:
+                        messages.append(TextSendMessage(text = utility.suggestMessage(diseaseMsg, i)))
 
 
             line_bot_api.reply_message(event.reply_token, messages)

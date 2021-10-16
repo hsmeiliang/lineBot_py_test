@@ -211,6 +211,7 @@ def suggestMessage(diseaseMsg, disease):
     msg = '因為您患有' + disease_name[disease] + '，不宜多吃' + disease_text[disease] + '，如餐點中:'
     for item in diseaseMsg:
         msg = msg + ' ' + item
+    return msg
 
 
 
