@@ -210,7 +210,7 @@ def handle_text_message(event):
             if len(conflicts) != 0:
                 messages.append(TextSendMessage(text='餐點中含有食物相剋:'+ utility.foodsMessage(conflicts)))
             
-            for i in range(disease):
+            for i in range(len(disease)):
                 if disease[i] == 1:
                     diseaseMsg = utility.diseaseFood(foods, i)
                     message.append(TextSendMessage(text = utility.suggestMessage(diseaseMsg, i)))
