@@ -200,7 +200,7 @@ def handle_text_message(event):
             print(conflicts)
             
             answer = utility.order(text)
-            messages = [TextSendMessage(text='建議您依照以下順序食用')]
+            messages = []
             lst = []
             for a in answer:
                 lst.append(a[0])
