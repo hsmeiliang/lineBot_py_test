@@ -84,7 +84,7 @@ def callback():
 ####
 ###
 status = 0
-disease = [1,0,0,0]
+disease = [1,0,1,0]
 '''
 diabete糖尿病
 heart
