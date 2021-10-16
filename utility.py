@@ -148,6 +148,7 @@ def diseaseFood(foods, disease):
             if int(row['disease']) == disease:
                 if row['food'] == food:
                     diseaseMsg.append(food + ' ')
+                    break
                 else:
                     for i in range(len(food)):
                         temp = food[i:i+len(row['food'])]
