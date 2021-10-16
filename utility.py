@@ -144,7 +144,7 @@ def diseaseFood(foods, disease):
     diseaseMsg = []
 
     for row in table:
-        if row['disease'] == disease:
+        if int(row['disease']) == disease:
             for food in foods:
                 if row['food'] == food:
                     diseaseMsg.append(food + ' ')
