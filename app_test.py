@@ -214,7 +214,7 @@ def handle_text_message(event):
             for i in range(len(disease)):
                 if disease[i] == 1:
                     diseaseMsg = utility.diseaseFood(foods, i, 'DiseaseFood.csv')
-                    medicineMsg = utility.diseaseFood(foods, i, 'MedicineConflicList.csv')
+                    medicineMsg = utility.diseaseFood(foods, i, 'MedicineConflictList.csv')
                     print(medicineMsg)
                     if len(diseaseMsg) != 0:
                         suggestions = suggestions + utility.suggestMessage(diseaseMsg, i) + '\n'
