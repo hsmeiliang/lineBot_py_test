@@ -221,7 +221,7 @@ def suggestMessage(diseaseMsg, medicineMsg, disease):
     if len(diseaseMsg) != 0 and len(medicineMsg) != 0:
         msg = msg + '\n'
     if len(medicineMsg) != 0:
-        msg = msg + medicine_text + '，如餐點中:'
+        msg = msg + medicine_text[disease] + '，如餐點中:'
         for item in medicineMsg:
             msg = msg + ' ' + item
     return msg
