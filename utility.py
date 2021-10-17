@@ -209,12 +209,19 @@ def foodsMessage(conflictMsg):
         num+=1
     return msg
 
-def suggestMessage(diseaseMsg, disease):
+def suggestMessage(diseaseMsg, medicineMsg, disease):
     disease_name = ['糖尿病', '心臟病', '高血壓', '肥胖']
     disease_text = ['含糖食物、高膽固醇食物等', '高脂肪/高膽固醇食物，且需少鈉', '肉類及醃製品等', '檸檬、柑橘、草莓、生食等']
-    msg = '因為您患有' + disease_name[disease] + '，不宜多吃' + disease_text[disease] + '，如餐點中:'
-    for item in diseaseMsg:
-        msg = msg + ' ' + item
+    medicine_text = ['', '若有服用心律不整、降血脂藥品，應避免同時攝食高纖食品', '若有服用降血壓藥，應避免同時攝食高鈉、高鉀食物', '']
+    msg =  '「' + disease_name[disease] + '」' + '\n'
+    if len(diseaseMsg) != 0:
+        msg = msg + '不宜多吃' + disease_text[disease] + '，如餐點中:'
+        for item in diseaseMsg:
+            msg = msg + ' ' + item
+    if len(diseaseMsg) != 0 and len(medicineMsg) != 0:
+        msg = msg + '\n'
+    if len(medicineMsg) != 0:
+        msg = msg + medicine_text + '，如餐點中:'
     return msg
 
 
