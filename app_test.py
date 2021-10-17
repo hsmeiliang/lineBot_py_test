@@ -217,7 +217,7 @@ def handle_text_message(event):
                     medicineMsg = utility.diseaseFood(foods, i, 'MedicineConflictList.csv')
                     print(medicineMsg)
                     if len(diseaseMsg) != 0 or len(medicineMsg) != 0:
-                        suggestions = suggestions + utility.suggestMessage(diseaseMsg, medicineMsg, i) + '\n'
+                        suggestions = suggestions + utility.suggestMessage(diseaseMsg, medicineMsg, i)
 
 
             messages.append(TextSendMessage(text = suggestions))
