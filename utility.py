@@ -133,18 +133,20 @@ def order(data):
         answer[f] = score
     return sorted(answer.items(), key=operator.itemgetter(1), reverse=True)
 
-def diseaseFood(foods, disease):
+def diseaseFood(foods, disease, flie_name):
+
     column = []
-    with open('DiseaseFood.csv', 'r', encoding = "utf-8") as csvfile:
+    with open(file_name, 'r', encoding = "utf-8") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             column.append(row)
     # print(column)
-    table = json.loads(json.dumps(column))
+    diseaseTable = json.loads(json.dumps(column))
+
     diseaseMsg = []
 
     for food in foods:
-        for row in table:
+        for row in diseaseTable:
             if int(row['disease']) == disease:
                 if row['food'] == food:
                     diseaseMsg.append(food + ' ')
@@ -155,6 +157,7 @@ def diseaseFood(foods, disease):
                         if row['food'] == temp:
                             diseaseMsg.append(food + ' ')
                             break
+
     return diseaseMsg
 
 def foodConflict(foods):
