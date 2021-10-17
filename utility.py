@@ -133,7 +133,7 @@ def order(data):
         answer[f] = score
     return sorted(answer.items(), key=operator.itemgetter(1), reverse=True)
 
-def diseaseFood(foods, disease, flie_name):
+def diseaseFood(foods, disease, file_name):
 
     column = []
     with open(file_name, 'r', encoding = "utf-8") as csvfile:
