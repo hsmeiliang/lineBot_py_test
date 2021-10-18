@@ -146,17 +146,23 @@ def diseaseFood(foods, disease, file_name):
     diseaseMsg = []
 
     for food in foods:
+        flag = 0
         for row in diseaseTable:
             if int(row['disease']) == disease:
-                if row['food'] == food:
-                    diseaseMsg.append(food + ' ')
-                    break
+                if flag == 0:
+                    if row['food'] == food:
+                        diseaseMsg.append(food + ' ')
+                        flag = 1
+                        break
+                    else:
+                        for i in range(len(food)):
+                            temp = food[i:i+len(row['food'])]
+                            if row['food'] == temp:
+                                diseaseMsg.append(food + ' ')
+                                flag = 1
+                                break
                 else:
-                    for i in range(len(food)):
-                        temp = food[i:i+len(row['food'])]
-                        if row['food'] == temp:
-                            diseaseMsg.append(food + ' ')
-                            break
+                    break
 
     return diseaseMsg
 
