@@ -210,7 +210,7 @@ def handle_text_message(event):
             if len(conflicts) != 0:
                 messages.append(TextSendMessage(text='餐點中含有食物相剋:'+ utility.foodsMessage(conflicts)))
             
-            suggestions = '因為您患有'
+            suggestions = ''
             for i in range(len(disease)):
                 if disease[i] == 1:
                     diseaseMsg = utility.diseaseFood(foods, i, 'DiseaseFood.csv')
@@ -218,9 +218,8 @@ def handle_text_message(event):
                     print(medicineMsg)
                     if len(diseaseMsg) != 0 or len(medicineMsg) != 0:
                         suggestions = suggestions + '\n' + utility.suggestMessage(diseaseMsg, medicineMsg, i)
-
-
-            messages.append(TextSendMessage(text = suggestions))
+            if len(suggestions) != 0
+                messages.append(TextSendMessage(text ='因為您患有' + suggestions))
 
             line_bot_api.reply_message(event.reply_token, messages)
     elif status == 17:
