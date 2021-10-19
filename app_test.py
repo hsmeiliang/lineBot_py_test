@@ -218,7 +218,7 @@ def handle_text_message(event):
                     print(medicineMsg)
                     if len(diseaseMsg) != 0 or len(medicineMsg) != 0:
                         suggestions = suggestions + '\n' + utility.suggestMessage(diseaseMsg, medicineMsg, i)
-            if len(suggestions) != 0
+            if len(suggestions) != 0:
                 messages.append(TextSendMessage(text ='因為您患有' + suggestions))
 
             line_bot_api.reply_message(event.reply_token, messages)
