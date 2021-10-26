@@ -56,6 +56,8 @@ postbackRouter.add('/glutenfreeDiet', EatIntroduceController.glutenfreeDiet)
 postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
 postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
+postbackRouter.add('/lose_weight', EatIntroduceController.glutenB)
+postbackRouter.add('/keep_health', EatIntroduceController.glutenC)
 
 import schedule
 import time
@@ -192,6 +194,14 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入最低熱量需求(kcal):\n範例:1000'),
                                                     TextSendMessage(text = '若取消請輸入N')])
         status = 18
+    elif text == '設定健康目標':
+        buttons_template = ButtonsTemplate(title='設定目標', text='setting goal', actions=[
+            PostbackAction(label='減重', data='/lose_weight'),
+            PostbackAction(label='維持健康', data='/keep_health'),
+        ])
+        template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
+        
     elif status == 7:
             foods = text.split(' ')
             # conflicts = requests.get("https://mhealth-service.feveral.me/api/food/conflict", params={"foods":foods}, verify=False).json()['conflicts']
@@ -275,6 +285,12 @@ def handle_text_message(event):
             message = FlexSendMessage(alt_text = '餐點推薦', contents = beaconMessage.showList(recommendList))
             line_bot_api.reply_message(event.reply_token, message)
             status = 0
+
+            
+
+
+
+
 
     
     
