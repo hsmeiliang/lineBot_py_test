@@ -39,6 +39,7 @@ hwID_list = ['0125f93bd3', '0126846195']
 app = Flask(__name__)
 from MessageRouter import MessageRouter
 from controllers.EatIntroduceController import EatIntroduceController
+from controllers.HealthGoalController import HealthGoalController
 postbackRouter = MessageRouter(routerType='postback')
 postbackRouter.add('/ketogenicDiet', EatIntroduceController.ketogenicDiet)
 postbackRouter.add('/ketoA', EatIntroduceController.ketoA)
@@ -56,8 +57,8 @@ postbackRouter.add('/glutenfreeDiet', EatIntroduceController.glutenfreeDiet)
 postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
 postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
-postbackRouter.add('/lose_weight', EatIntroduceController.glutenB)
-postbackRouter.add('/keep_health', EatIntroduceController.glutenC)
+postbackRouter.add('/lose_weight', HealthGoalController.loseWeight)
+postbackRouter.add('/keep_health', HealthGoalController.keepHealth)
 
 import schedule
 import time
