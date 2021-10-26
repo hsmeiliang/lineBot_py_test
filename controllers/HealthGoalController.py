@@ -11,7 +11,7 @@ class HealthGoalController():
     
     @staticmethod
     def keepHealth(event):
-        line_bot_api.reply_message(event.reply_token, TextMessage(text = 'keep_health'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = 'keep_health'))
     
     @staticmethod
     def loseWeight(event):
