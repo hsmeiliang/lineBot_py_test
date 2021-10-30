@@ -43,12 +43,12 @@ class HealthReminder():
     @staticmethod
     def turnOn(event):
         func_on = 1
-        healthMessage(event)
+        HealthReminder.healthMessage(event)
     
     @staticmethod
     def turnOff(event):
         func_on = 0
-        healthMessage(event)
+        HealthReminder.healthMessage(event)
     
 '''
 class HealthGoalController():
