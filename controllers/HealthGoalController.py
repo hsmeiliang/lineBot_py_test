@@ -15,7 +15,7 @@ import threading
 import time
 
 
-def healthMessage(event):
+def healthMessage(event, func_on):
 
     def job1():
         line_bot_api.push_message(event.source.user_id, TextSendMessage(text = 'push message'))
@@ -26,7 +26,7 @@ def healthMessage(event):
             func()
         t = threading.Timer(sec, func_wrapper)
         t.start()
-    return t
+        return t
     timer = set_interval(job1, 60) # 5min
     # one day = 86400 sec
     if func_on == 0:
@@ -40,12 +40,12 @@ class HealthReminder():
     @staticmethod
     def turnOn(event):
         func_on = 1
-        healthMessage(event)
+        healthMessage(event, func_on)
     
     @staticmethod
     def turnOff(event):
         func_on = 0
-        healthMessage(event)
+        healthMessage(event, func_on)
     
 '''
 class HealthGoalController():
