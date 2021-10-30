@@ -17,19 +17,14 @@ import time
 
 
 class HealthReminder():
-    def __init__(self, func_on = 0):
-        self.func_on = func_on
-    
-    def turnOn(self, event):
-        self.func_on = 1
-    
-    def turnOff(self, event):
-        self.func_on = 0
-    
-    def healthMessage(self):
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def healthMessage(event):
 
         def job1():
-            line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage(text = 'push message'))
+            line_bot_api.push_message(event.source.user_id, TextSendMessage(text = 'push message'))
             
         def set_interval(func, sec):
             def func_wrapper():
@@ -41,9 +36,20 @@ class HealthReminder():
 
         timer = set_interval(job1, 60) # 5min
         # one day = 86400 sec
-        if self.func_on == 0:
+        if func_on == 0:
             if timer.is_alive():
                 timer.cancel()
+    
+    @staticmethod
+    def turnOn(event):
+        func_on = 1
+        healthMessage(event)
+    
+    @staticmethod
+    def turnOff(event):
+        func_on = 0
+        healthMessage(event)
+    
 '''
 class HealthGoalController():
     def __init__(self):

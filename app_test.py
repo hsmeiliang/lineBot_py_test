@@ -64,7 +64,7 @@ postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
 textRouter = MessageRouter('text')
 textRouter.add('.*開.*', HealthReminder.turnOn)
 textRouter.add('.*關.*', HealthReminder.turnOff)
-HealthReminder.healthMessage()
+
 
 import schedule
 import time
