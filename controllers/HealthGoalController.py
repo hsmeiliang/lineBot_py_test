@@ -8,7 +8,6 @@ handler = WebhookHandler('3b99db8557a3bb97f24e626b0d84837c')
 from linebot.models import *
 #from LineInitializer import line_bot_api, handler
 import requests
-import config
 import datetime as dt
 from datetime import datetime
 import json
