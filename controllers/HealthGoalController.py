@@ -20,13 +20,13 @@ class HealthReminder():
     def __init__(self, func_on = 0):
         self.func_on = func_on
     
-    def turnOn(self):
+    def turnOn(self, event):
         self.func_on = 1
     
-    def turnOff(self):
+    def turnOff(self, event):
         self.func_on = 0
     
-    def healthMessage(self, event):
+    def healthMessage(self):
 
         def job1():
             line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage(text = 'push message'))
