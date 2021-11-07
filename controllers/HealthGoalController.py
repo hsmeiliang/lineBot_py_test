@@ -47,7 +47,7 @@ class HealthReminder():
         func_on = 0
         healthMessage(event, func_on)
     
-'''
+
 class HealthGoalController():
     def __init__(self):
         pass
@@ -60,4 +60,3 @@ class HealthGoalController():
     @staticmethod
     def loseWeight(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = 'lose_weight'))
-'''

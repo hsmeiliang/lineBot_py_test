@@ -58,8 +58,8 @@ postbackRouter.add('/glutenfreeDiet', EatIntroduceController.glutenfreeDiet)
 postbackRouter.add('/glutenA', EatIntroduceController.glutenA)
 postbackRouter.add('/glutenB', EatIntroduceController.glutenB)
 postbackRouter.add('/glutenC', EatIntroduceController.glutenC)
-# postbackRouter.add('/lose_weight', HealthGoalController.loseWeight)
-# postbackRouter.add('/keep_health', HealthGoalController.keepHealth)
+postbackRouter.add('/lose_weight', HealthGoalController.loseWeight)
+postbackRouter.add('/keep_health', HealthGoalController.keepHealth)
 
 textRouter = MessageRouter('text')
 textRouter.add('.*開.*', HealthReminder.turnOn)
@@ -204,7 +204,7 @@ def handle_text_message(event):
     elif text == '設定健康目標':
         buttons_template = ButtonsTemplate(title='設定目標', text='setting goal', actions=[
             PostbackAction(label='減重', data='/lose_weight'),
-            PostbackAction(label='維持健康', data='/keep_health'),
+            PostbackAction(label='維持健康', data=['/keep_health', '/lose_weight']),
         ])
         template_message = TemplateSendMessage(alt_text='Buttons alt text', template=buttons_template)
         line_bot_api.reply_message(event.reply_token, template_message)
