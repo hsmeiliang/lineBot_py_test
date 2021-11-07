@@ -39,7 +39,7 @@ hwID_list = ['0125f93bd3', '0126846195']
 app = Flask(__name__)
 from MessageRouter import MessageRouter
 from controllers.EatIntroduceController import EatIntroduceController
-from controllers.HealthGoalController import HealthReminder
+from controllers.HealthGoalController import HealthReminder, HealthGoalController
 
 postbackRouter = MessageRouter(routerType='postback')
 postbackRouter.add('/ketogenicDiet', EatIntroduceController.ketogenicDiet)
