@@ -59,4 +59,4 @@ class HealthGoalController():
     
     @staticmethod
     def loseWeight(event):
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = 'lose_weight'))
+        line_bot_api.push_message('Ufbdbbd3db1cc8d560f45d5cd2519b290', TextSendMessage(text = 'lose_weight'))
