@@ -193,7 +193,7 @@ def handle_text_message(event):
             TextSendMessage(text='請輸入想吃的食物名稱\nex:牛排 沙拉 奶茶 巧克力蛋糕')
         ])
         status = 7
-    elif text == '路線推薦':
+    elif text == '路線':
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入預定運動路線長度(km):\n範例:3'),
                                                     TextSendMessage(text = '若取消請輸入N')])
         status = 17
