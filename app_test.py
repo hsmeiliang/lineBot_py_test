@@ -188,7 +188,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     elif text == '飲食順序':
         line_bot_api.reply_message(event.reply_token, [
-            TextSendMessage(text='hi根據相關研究表明，高GI的食物愈後吃愈能控制血糖的上升\n\n'+
+            TextSendMessage(text='根據相關研究表明，高GI的食物愈後吃愈能控制血糖的上升\n\n'+
             '理想的飲食順序為:\n1. 蔬菜類\n2. 蛋豆魚肉類\n3. 脂肪類\n4. 五穀根莖類\n5. 水果\n6. 飲料和甜點'),
             TextSendMessage(text='請輸入想吃的食物名稱\nex:牛排 沙拉 奶茶 巧克力蛋糕')
         ])
