@@ -201,7 +201,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入最低熱量需求(kcal):\n範例:1000'),
                                                     TextSendMessage(text = '若取消請輸入N')])
         status = 18
-    elif text == '設定健康目標':
+    elif text == '健康目標':
         buttons_template = ButtonsTemplate(title='設定目標', text='setting goal', actions=[
             PostbackAction(label='減重', data='/lose_weight'),
             PostbackAction(label='維持健康', data=['/keep_health', '/lose_weight']),
