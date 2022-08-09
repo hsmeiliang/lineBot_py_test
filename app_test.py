@@ -197,7 +197,7 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入預定運動路線長度(km):\n範例:3'),
                                                     TextSendMessage(text = '若取消請輸入N')])
         status = 17
-    elif text == '附近餐點推薦':
+    elif text == '附近餐點':
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入最低熱量需求(kcal):\n範例:1000'),
                                                     TextSendMessage(text = '若取消請輸入N')])
         status = 18
