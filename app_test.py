@@ -200,7 +200,7 @@ def handle_text_message(event):
         status = 17
     elif text == '餐點':
         line_bot_api.reply_message(event.reply_token, [TextSendMessage(text = '請輸入最低熱量需求(kcal):\n範例:1000'),
-                                                    TextSendMessage(text = '若取消請輸入N')])
+                                                    TextSendMessage(text = '若取消請輸入N，https://selab1.cs.nthu.edu.tw:81/videocall.html')])
         status = 18
     elif text == '健康目標':
         buttons_template = ButtonsTemplate(title='設定目標', text='setting goal', actions=[
