@@ -14,6 +14,6 @@ import requests
   # 修改為你要傳送的訊息內容
   message = 'Notify from LINE, HELLO WORLD'
   # 修改為你的權杖內容
-  token = 'oThdprPAfemWaORslcDBsTXl7SwXpYiYin63yoclkDu'
+  token = ''
 
   lineNotifyMessage(token, message)
