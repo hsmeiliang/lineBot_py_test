@@ -32,11 +32,11 @@ from translate import Translator
 #
 # LINE 聊天機器人的基本資料
 # LINE 的 channel_access_token, channel_secret 換成在 Line Developer 裡的資料
-
-line_bot_api = LineBotApi('eeca7lo2Ebs14wFbm4AXhvU/5qj569ywDfMxQ9a4cZaIqDKE4TFiHNNWvUaah2A2clVoV9McprdK6K/guNEZiSV8P6+HRgPr2Z3mB+3it2r3q2IDUJByKbPMoGwTrduDjjXZiW5xAp2FWQzSC0Tc7wdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('3b99db8557a3bb97f24e626b0d84837c')
-hwID_list = ['0125f93bd3', '0126846195']
-
+'''
+line_bot_api = 
+handler = 
+hwID_list = 
+'''
 app = Flask(__name__)
 from MessageRouter import MessageRouter
 from controllers.EatIntroduceController import EatIntroduceController
@@ -137,19 +137,14 @@ def handle_text_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(event.source.user_id))
     elif text == '排行榜':
         
-        response = requests.post("https://virtserver.swaggerhub.com/v54dt/mhealth/1.0.0/rankings")
+        response = requests.post("")
         result = json.loads(response.text)
         print(result)
         result = json.loads(json.dumps(
             {
                 "category": "exerciseDuration",
                 "lineIDList": [
-                [
-                    'Ufbdbbd3db1cc8d560f45d5cd2519b290',
-                    'Ufbdbbd3db1cc8d560f45d5cd2519b291',
-                    'Ufbdbbd3db1cc8d560f45d5cd2519b290',
-                    'Ufbdbbd3db1cc8d560f45d5cd2519b291'
-                ]
+                []
                 ],
                 "sortedData": [
                     40,
